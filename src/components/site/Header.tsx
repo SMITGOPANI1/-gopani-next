@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
@@ -53,7 +53,41 @@ function useActiveNav() {
 
 export default function Header() {
   const active = useActiveNav();
+  const navRef = useRef<HTMLUListElement>(null);
+  type PillBox = { left: number; width: number; top: number; height: number };
+  const [pill, setPill] = useState<{ box: PillBox | null; shown: boolean; jump: boolean }>({ box: null, shown: false, jump: false });
   const [open, setOpen] = useState(false); // mobile menu
+
+  // One highlight pill slides between nav items as the active section changes (instead of each
+  // item lighting up on its own). Measured against the <ul>, re-measured on resize and font load.
+  useLayoutEffect(() => {
+    const ul = navRef.current;
+    if (!ul) return;
+    let raf = 0;
+    const measure = () => {
+      const el = ul.querySelector<HTMLElement>(".active");
+      if (!el) {
+        // Nothing active (e.g. between sections): fade out where it is, don't slide away
+        setPill((p) => ({ ...p, shown: false }));
+        return;
+      }
+      const u = ul.getBoundingClientRect(), r = el.getBoundingClientRect();
+      const box = { left: r.left - u.left, width: r.width, top: r.top - u.top, height: r.height };
+      setPill((p) => {
+        // Coming back from hidden: appear in place (no slide from the old spot), then animate again
+        if (!p.shown) {
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => setPill((q) => ({ ...q, jump: false })));
+          return { box, shown: true, jump: true };
+        }
+        return { ...p, box };
+      });
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    document.fonts?.ready.then(measure).catch(() => {});
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", measure); };
+  }, [active]);
   const [mega, setMega] = useState(false); // services dropdown (click / touch)
   const megaRef = useRef<HTMLLIElement>(null);
   const closeTimer = useRef<number | undefined>(undefined);
@@ -93,7 +127,8 @@ export default function Header() {
           <Logo />
 
           <nav aria-label="Primary">
-            <ul className="nav-links">
+            <ul className="nav-links" ref={navRef}>
+              <li className={`nav-pill${pill.shown ? " show" : ""}${pill.jump ? " jump" : ""}`} aria-hidden="true" style={pill.box ?? undefined} />
               <li><Link href="/#top" className={active === "top" ? "active" : undefined}>Home</Link></li>
               <li
                 ref={megaRef}
@@ -102,9 +137,9 @@ export default function Header() {
                 onMouseLeave={closeMegaSoon}
                 onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setMega(false); }}
               >
-                <button className={`nav-btn${active === "services" ? " active" : ""}`} aria-haspopup="true" aria-expanded={mega} onClick={openMega}>
+                <Link href="/#services" className={`nav-btn${active === "services" ? " active" : ""}`} aria-haspopup="true" aria-expanded={mega} onClick={closeAll}>
                   Services <ChevronDown size={16} />
-                </button>
+                </Link>
                 <div className="mega" role="menu">
                   <div className="mega-col">
                     <span className="m m-blue">{GROUPS.build.label} · {GROUPS.build.kicker}</span>

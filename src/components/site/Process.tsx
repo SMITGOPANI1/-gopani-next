@@ -4,7 +4,7 @@ import { PROCESS } from "@/config/content";
 import { SplitHeading } from "./Split";
 import { ArrowRight } from "./icons";
 
-// Outline of each step's tile and icon in process-steps.webp (1536×1024), as % of the image
+// Outline of each step's tile and icon in the illustration (1536×1024), as % of the image
 const TILE_CLIPS = [
   [[140, 790], [205, 760], [205, 712], [350, 712], [350, 770], [405, 800], [405, 860], [275, 948], [140, 880]],
   [[403, 700], [475, 660], [475, 582], [610, 582], [610, 668], [668, 700], [668, 770], [540, 838], [403, 770]],
@@ -13,10 +13,15 @@ const TILE_CLIPS = [
   [[1185, 280], [1250, 230], [1250, 172], [1370, 172], [1370, 215], [1432, 250], [1432, 320], [1300, 398], [1185, 330]],
 ].map((pts) => `polygon(${pts.map(([x, y]) => `${((x / 1536) * 100).toFixed(2)}% ${((y / 1024) * 100).toFixed(2)}%`).join(", ")})`);
 
-// Centre of each tile, so a hovered tile grows in place and fully covers the original
-const TILE_CENTRES = [[272, 850], [535, 730], [798, 610], [1046, 470], [1308, 300]].map(
-  ([x, y]) => `${((x / 1536) * 100).toFixed(2)}% ${((y / 1024) * 100).toFixed(2)}%`,
-);
+// Each step's icon, cut out of the illustration (process-icon-N.png) so it can lift on hover.
+// Position and width as % of the base image, which has the icons painted out.
+const ICONS = [
+  { left: 12.7, top: 68.36, width: 10.74 },
+  { left: 30.6, top: 57.42, width: 9.77 },
+  { left: 47.2, top: 43.46, width: 11.39 },
+  { left: 63.48, top: 30.27, width: 9.77 },
+  { left: 80.4, top: 15.62, width: 9.77 },
+];
 
 /** Section 04: how we work — the five steps as a vertical timeline beside the step illustration. */
 export default function Process() {
@@ -24,7 +29,6 @@ export default function Process() {
     <section id="process" aria-label="How we work" className="bg-2">
       <div className="wrap sec proc-home">
         <div className="proc-home-head">
-          <p className="proc-kicker m" data-reveal>Our process</p>
           <SplitHeading className="h-section" text="Five steps. One team, start to finish." />
         </div>
         <p className="lead proc-home-lead" data-reveal>No handoffs between a &ldquo;build&rdquo; vendor and a &ldquo;grow&rdquo; vendor — the same people who design and build your project are the ones who market it afterwards.</p>
@@ -48,12 +52,12 @@ export default function Process() {
           </div>
         </div>
 
-        {/* Step illustration. Each tile is a copy of the image clipped to that tile, so it can
-            grow and glow on hover; hovering a step in the list does the same (and the reverse). */}
+        {/* Step illustration: the base has the icons painted out; each icon is its own image so it
+            lifts on hover. The clipped tiles are just hover hit-areas, linked both ways with the list. */}
         <div className="pv" data-reveal data-delay="0.15">
           <div className="pv-in">
             <Image
-              src="/images/process-steps.webp"
+              src="/images/process-base.webp"
               alt="Our five steps: Discover, Strategy, Design & Build, Launch, Grow"
               width={1536}
               height={1024}
@@ -61,8 +65,12 @@ export default function Process() {
               unoptimized
             />
             {PROCESS.map((p, i) => (
+              /* eslint-disable-next-line @next/next/no-img-element -- cut-out layered over the base image */
+              <img className="pv-icon" data-n={i + 1} key={p.n} src={`/images/process-icon-${i + 1}.png`} alt="" style={{ left: `${ICONS[i].left}%`, top: `${ICONS[i].top}%`, width: `${ICONS[i].width}%` }} />
+            ))}
+            {PROCESS.map((p, i) => (
               <div className="pv-step" data-n={i + 1} key={p.n} aria-hidden="true">
-                <div className="pv-tile" style={{ clipPath: TILE_CLIPS[i], transformOrigin: TILE_CENTRES[i] }} />
+                <div className="pv-tile" style={{ clipPath: TILE_CLIPS[i] }} />
               </div>
             ))}
           </div>

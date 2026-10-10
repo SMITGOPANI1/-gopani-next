@@ -35,25 +35,6 @@ export default function HeroOrbit() {
   const [hot, setHot] = useState<number | null>(null);
   const [pills, setPills] = useState<Pill[] | null>(null);
   const [links, setLinks] = useState<Link[]>([]);
-  const MAX = 8; // degrees of tilt at the edge
-
-  // The side under the cursor sinks in, the opposite side lifts out (off while a card is open).
-  const tilt = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = orbit.current;
-    if (!el || hot !== null || e.pointerType !== "mouse") return;
-    const r = e.currentTarget.getBoundingClientRect();
-    const dx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-    const dy = ((e.clientY - r.top) / r.height - 0.5) * 2;
-    el.style.transition = "transform 0.15s ease-out";
-    el.style.transform = `rotateX(${(-dy * MAX).toFixed(2)}deg) rotateY(${(dx * MAX).toFixed(2)}deg)`;
-  };
-  const reset = () => {
-    const el = orbit.current;
-    if (!el || hot !== null) return;
-    el.style.transition = "transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1)";
-    el.style.transform = "";
-  };
-
   const keep = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   };
@@ -171,7 +152,7 @@ export default function HeroOrbit() {
   }, [hot, pills]);
 
   return (
-    <div className="orbit-wrap" ref={wrap} onPointerMove={tilt} onPointerLeave={reset} aria-hidden="true">
+    <div className="orbit-wrap" ref={wrap} aria-hidden="true">
       <svg className="orbit-links">
         {links.map((l, n) => (
           <g key={n}>

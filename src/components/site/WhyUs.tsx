@@ -12,7 +12,6 @@ export default function WhyUs() {
     <section id="why-us" className="why-sec">
       <div className="wrap sec">
         <div className="sec-head center">
-          <p className="why-kicker m" data-reveal>Why work with us</p>
           <SplitHeading className="h-section" text="A simpler way to build and grow" />
           <p className="lead" data-reveal>Experienced people, aligned teams, clear numbers and long-term thinking — all working together for your success.</p>
         </div>
