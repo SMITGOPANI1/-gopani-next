@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CLIENTS } from "@/config/content";
 
 export default function ClientLogos() {
@@ -11,9 +10,9 @@ export default function ClientLogos() {
       <div className="marquee">
         <div className="marquee-track">
           {items.map((c, i) => (
-            <Link key={`${c.name}-${i}`} href="/work" className="client" aria-hidden={i >= CLIENTS.length} tabIndex={i >= CLIENTS.length ? -1 : 0}>
+            <span key={`${c.name}-${i}`} className="client" aria-hidden={i >= CLIENTS.length}>
               <i>{c.mark}</i>{c.name}
-            </Link>
+            </span>
           ))}
         </div>
       </div>

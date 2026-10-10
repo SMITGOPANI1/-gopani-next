@@ -37,7 +37,7 @@ export default function Process() {
         </div>
 
         <div className="tl-cta" data-reveal>
-          <Link href="/contact" className="btn btn-blue">Book a Free Call <ArrowRight size={18} /></Link>
+          <Link href="/#contact" className="btn btn-blue">Book a Free Call <ArrowRight size={18} /></Link>
           <span style={{ color: "var(--muted)", fontSize: 15 }}>Your project can start within 10 days of the first call.</span>
         </div>
       </div>

@@ -2,17 +2,15 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { Dialog } from "radix-ui";
 import { ArrowLeft, ArrowRight as ArrowR } from "lucide-react";
 import { CONFIG } from "@/config/site";
-import { TESTIMONIALS, VIDEO_TESTIMONIAL } from "@/config/content";
+import { TESTIMONIALS } from "@/config/content";
 import { SplitHeading } from "./Split";
-import { Star, Play } from "./icons";
+import { Star } from "./icons";
 
 export default function Testimonials() {
   const [emblaRef, embla] = useEmblaCarousel({ loop: true, align: "start" });
   const [index, setIndex] = useState(0);
-  const [videoOpen, setVideoOpen] = useState(false);
 
   useEffect(() => {
     if (!embla) return;
@@ -40,13 +38,6 @@ export default function Testimonials() {
         </div>
 
         <div className="testi">
-          <button type="button" className="video-card" data-reveal onClick={() => setVideoOpen(true)} aria-label="Play video testimonial">
-            <span className="badge">Video review · {VIDEO_TESTIMONIAL.duration}</span>
-            <span className="play"><Play size={28} /></span>
-            <blockquote>&ldquo;{VIDEO_TESTIMONIAL.quote}&rdquo;</blockquote>
-            <span className="who">{VIDEO_TESTIMONIAL.name} · {VIDEO_TESTIMONIAL.role}</span>
-          </button>
-
           <div className="slider" data-reveal data-delay="0.1">
             <div className="embla" ref={emblaRef}>
               <div className="embla-track">
@@ -84,32 +75,6 @@ export default function Testimonials() {
           {CONFIG.reviews.goodfirms && <a href={CONFIG.reviews.goodfirms} target="_blank" rel="noopener">Verified on GoodFirms</a>}
         </div>
       </div>
-
-      <Dialog.Root open={videoOpen} onOpenChange={setVideoOpen}>
-        <Dialog.Portal>
-          <Dialog.Overlay className="dlg-overlay" />
-          <Dialog.Content className="video-box" aria-describedby={undefined}>
-            <Dialog.Title className="sr-only" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>
-              Video testimonial
-            </Dialog.Title>
-            <Dialog.Close className="dlg-close" aria-label="Close video">×</Dialog.Close>
-            <div className="frame">
-              {CONFIG.videoId ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${CONFIG.videoId}?autoplay=1`}
-                  title="Client video testimonial"
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="empty">
-                  <p>Your client video goes here. Paste a YouTube video ID into <code>CONFIG.videoId</code> in <code>src/config/site.ts</code>.</p>
-                </div>
-              )}
-            </div>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
     </section>
   );
 }

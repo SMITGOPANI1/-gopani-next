@@ -1,6 +1,6 @@
-# GOPANI: Next.js website
+# KarmahubAI: Next.js website
 
-The GOPANI site rebuilt in **Next.js 16 (App Router, TypeScript)**, with an
+The KarmahubAI site rebuilt in **Next.js 16 (App Router, TypeScript)**, with an
 **AI-generated film that plays frame by frame (30 fps) as you scroll**.
 
 ## Run it

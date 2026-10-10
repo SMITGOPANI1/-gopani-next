@@ -32,116 +32,6 @@ export const PROBLEMS = [
   },
 ];
 
-export type CaseStudy = {
-  slug: string;
-  client: string;
-  industry: string;
-  type: "Build" | "Grow" | "Build + Grow";
-  results: { value: string; label: string }[];
-  summary: string;
-  tone: "blue" | "ink" | "orange" | "teal";
-  image: string;
-  problem: string;
-  whatWeDid: string[];
-  quote: { text: string; name: string; role: string };
-  tech: string[];
-};
-
-export const CASES: CaseStudy[] = [
-  {
-    slug: "shopkart",
-    client: "ShopKart",
-    industry: "E-commerce",
-    type: "Build + Grow",
-    results: [
-      { value: "+240%", label: "organic traffic" },
-      { value: "3.2x", label: "return on ad spend" },
-      { value: "6 months", label: "store to sell-out" },
-    ],
-    summary: "ShopKart came to us with a slow, dated online store and zero organic traffic. We rebuilt it on Shopify, fixed the technical SEO, and ran Meta ads tuned to actual purchases instead of add-to-carts. Sales tripled within six months, and organic search is now their single biggest source of orders.",
-    tone: "blue",
-    image: "/images/case-ecommerce.jpg",
-    problem: "ShopKart's old store took over 6 seconds to load on mobile, ranked nowhere on Google, and their only marketing was boosted Instagram posts with no real tracking. They were spending money every month with no way to tell what, if anything, it was bringing back.",
-    whatWeDid: [
-      "Rebuilt the storefront on Shopify, cutting load time from 6s to under 1.5s",
-      "Fixed technical SEO issues and wrote category/product copy around real search terms",
-      "Set up Meta conversion tracking tied to actual purchases, not add-to-carts",
-      "Rebuilt ad campaigns around products that were already converting organically",
-    ],
-    quote: { text: "Our old website gave us zero enquiries for almost a year. GOPANI rebuilt it from scratch and ran our ads — we now get 30+ genuine calls every week.", name: "Priya Mehta", role: "Director, UrbanNest Realty" },
-    tech: ["Shopify", "Meta Ads", "Google Analytics 4", "Search Console"],
-  },
-  {
-    slug: "nova-health",
-    client: "Nova Health",
-    industry: "Healthcare",
-    type: "Build",
-    results: [
-      { value: "12K+", label: "app downloads" },
-      { value: "4.8★", label: "Play Store rating" },
-      { value: "-31%", label: "missed appointments" },
-    ],
-    summary: "Nova Health was losing patients to missed calls and paper appointment books. We built a booking app with reminders, online payments and a simple clinic dashboard their front desk actually enjoys using — missed appointments dropped by nearly a third in the first quarter.",
-    tone: "teal",
-    image: "/images/case-healthcare.jpg",
-    problem: "Nova Health ran three clinics on a shared paper appointment book and a landline that rang out half the time. Patients who couldn't get through just booked elsewhere, and nobody at the clinic could say how many appointments were missed each week, let alone why.",
-    whatWeDid: [
-      "Designed a booking flow a first-time patient could complete in under a minute",
-      "Built the app in Flutter for both Android and iOS from one codebase",
-      "Added automatic SMS and WhatsApp reminders 24 hours before each appointment",
-      "Built a simple front-desk dashboard the clinic staff could run without training",
-    ],
-    quote: { text: "They handled our website and ads together. Leads doubled in three months.", name: "Rahul S.", role: "Founder, Nova Health" },
-    tech: ["Flutter", "Node.js", "AWS", "WhatsApp API"],
-  },
-  {
-    slug: "urbannest",
-    client: "UrbanNest",
-    industry: "Real estate",
-    type: "Grow",
-    results: [
-      { value: "-58%", label: "cost per lead" },
-      { value: "900+", label: "leads per month" },
-      { value: "4.5x", label: "site visits booked" },
-    ],
-    summary: "UrbanNest had decent ad spend but a leaky funnel — leads came in and went cold. We rebuilt their Google and Meta campaigns around qualified intent, then connected every form to an instant WhatsApp follow-up sequence. Cost per lead fell by more than half while volume climbed.",
-    tone: "orange",
-    image: "/images/case-realestate.jpg",
-    problem: "UrbanNest was spending a serious monthly ad budget, but their sales team said most leads simply never picked up the phone when called a day later. By the time anyone followed up, the buyer had already spoken to three other brokers.",
-    whatWeDid: [
-      "Rebuilt campaign targeting around buyers actively searching, not broad awareness",
-      "Replaced the generic contact form with a shorter, project-specific enquiry form",
-      "Connected every form submission to an instant automated WhatsApp reply",
-      "Set up a weekly dashboard showing cost per lead and site visits booked, by project",
-    ],
-    quote: { text: "Our leads doubled in three months, and for the first time we could actually see why.", name: "Arjun Kapoor", role: "Owner, ShopKart" },
-    tech: ["Google Ads", "Meta Ads", "WhatsApp API", "Looker Studio"],
-  },
-  {
-    slug: "eduprime",
-    client: "EduPrime",
-    industry: "Education",
-    type: "Build + Grow",
-    results: [
-      { value: "2.4x", label: "admission enquiries" },
-      { value: "#1", label: "on Google in the city" },
-      { value: "3", label: "campuses, one platform" },
-    ],
-    summary: "EduPrime needed one website that could serve three campuses without three separate budgets. We built a shared platform with a student portal, then ran local SEO for each campus individually — admission enquiries more than doubled ahead of the next intake.",
-    tone: "ink",
-    image: "/images/case-education.jpg",
-    problem: "EduPrime had three separate campus websites built at three different times by three different vendors — none of them ranked locally, none of them talked to each other, and updating a single fee structure meant editing three sites by hand.",
-    whatWeDid: [
-      "Built one platform with a campus-specific page for each location",
-      "Added a student portal for admissions status and fee payments",
-      "Ran separate local SEO and Google Business Profiles per campus",
-      "Centralised content so one edit updates all three campus pages correctly",
-    ],
-    quote: { text: "They built our app on time and on budget. One project manager, always on WhatsApp. Very easy to work with.", name: "Neha Joshi", role: "COO, EduPrime" },
-    tech: ["Next.js", "Node.js", "Google Business Profile", "Search Console"],
-  },
-];
-
 // A short, brandable name for the 5-step process below. Shown in the "How we work" film.
 export const PROCESS_NAME = "The Build → Grow Method";
 
@@ -154,23 +44,10 @@ export const PROCESS = [
 ];
 
 export const WHY = [
-  { icon: "handshake", title: "Tech + marketing under one roof", text: "Most businesses hire one agency to build the website and another to market it — then spend half their time translating between the two. We do both, so nothing gets lost in the handoff and nobody can blame the other team." },
-  { icon: "user", title: "A dedicated project manager", text: "You get one named person who knows your project, answers your WhatsApp directly, and is accountable for the result. Not a rotating support ticket queue, not a different account manager every quarter." },
-  { icon: "chart", title: "Weekly reports and a live dashboard", text: "Every Friday you get a short, plain-English report: what we did, what it cost, and what it brought back. A live dashboard means you're never waiting for month-end to find out how things are going." },
-  { icon: "key", title: "You own everything, always", text: "Your domain, hosting, source code, ad accounts and customer data are registered in your name from day one. If we ever part ways, you walk away with everything — nothing is held hostage." },
-];
-
-export const COMPARE: { label: string; agency: string; us: string }[] = [
-  { label: "Builds your website or app", agency: "yes", us: "yes" },
-  { label: "Runs your marketing too", agency: "no", us: "yes" },
-  { label: "Weekly reports", agency: "no", us: "yes" },
-  { label: "You own the code and ad accounts", agency: "sometimes", us: "always" },
-  { label: "One point of contact", agency: "no", us: "yes" },
-  { label: "No long lock-in contract", agency: "no", us: "yes" },
-  { label: "A written quote before any work starts", agency: "sometimes", us: "always" },
-  { label: "Real founders you can actually meet", agency: "no", us: "yes" },
-  { label: "Registered LLP, LLPIN and GST shown", agency: "sometimes", us: "always" },
-  { label: "Optimised to be found on ChatGPT / AI search", agency: "no", us: "yes" },
+  { icon: "user", title: "Senior people on the work", text: "Experienced engineers, designers and marketers lead every engagement. You're not paying for juniors to learn on your project." },
+  { icon: "handshake", title: "One team, not five vendors", text: "Your product, website, infrastructure and campaigns are planned together, so they pull in the same direction." },
+  { icon: "chart", title: "Measured, not assumed", text: "We agree the numbers that matter at the start, such as leads, cost per acquisition, uptime and release speed, and report on them every month." },
+  { icon: "rocket", title: "Built for the next stage", text: "We design for where you're heading, not only where you are, so growth doesn't force a rebuild." },
 ];
 
 export const DELIVERY_MODELS = [
@@ -210,10 +87,10 @@ export const INDUSTRIES = [
 ];
 
 export const TESTIMONIALS = [
-  { quote: "Our old website gave us zero enquiries for almost a year. GOPANI rebuilt it from scratch and ran our Google Ads — we now get 30+ genuine calls every week, and we can see exactly which keyword brought each one in.", name: "Priya Mehta", role: "Director, UrbanNest Realty", initials: "PM" },
+  { quote: "Our old website gave us zero enquiries for almost a year. KarmahubAI rebuilt it from scratch and ran our Google Ads — we now get 30+ genuine calls every week, and we can see exactly which keyword brought each one in.", name: "Priya Mehta", role: "Director, UrbanNest Realty", initials: "PM" },
   { quote: "The weekly report is honestly my favourite part of working with them. I always know exactly where my ad budget is going and what it brought back — no more guessing, no more waiting for a monthly call to find out.", name: "Arjun Kapoor", role: "Owner, ShopKart", initials: "AK" },
   { quote: "They built our booking app on time and on the budget we agreed in writing, with zero scope creep. One project manager, always reachable on WhatsApp, who actually understood our clinic's workflow. Very easy to work with.", name: "Neha Joshi", role: "COO, EduPrime", initials: "NJ" },
-  { quote: "We tried three agencies before GOPANI, and all three optimised for vanity metrics — followers, likes, impressions. GOPANI is the first one that tied every rupee we spent back to an actual sale.", name: "Vikram Shah", role: "Founder, FreshMart", initials: "VS" },
+  { quote: "We tried three agencies before KarmahubAI, and all three optimised for vanity metrics — followers, likes, impressions. KarmahubAI is the first one that tied every rupee we spent back to an actual sale.", name: "Vikram Shah", role: "Founder, FreshMart", initials: "VS" },
 ];
 
 export const VIDEO_TESTIMONIAL = {
@@ -266,14 +143,13 @@ export const POSTS = [
 ];
 
 export const FAQS = [
-  { q: "How long does a project take?", a: "A website or digital presence refresh takes 3 to 6 weeks. An application or infrastructure project usually takes 8 to 16 weeks, depending on scope. Every timeline is confirmed in writing after a free consultation, before any work starts." },
-  { q: "Who owns the code, the domain and the ad accounts?", a: "You do, from the very first day. Your domain, hosting, source code, ad accounts and customer data are all set up and registered in your name. If we ever part ways for any reason, everything stays with you — nothing is held back." },
-  { q: "How will I know what work is being done?", a: "You get a weekly written report and a live dashboard, plus a named project manager you can message directly on WhatsApp whenever you have a question. No surprises saved up for a month-end call." },
-  { q: "Is there a long contract?", a: "No. Projects are scoped and priced in writing before work starts. Ongoing plans — support, pods or marketing retainers — run with no long lock-in, and you can pause or stop with 30 days' notice." },
-  { q: "Do you give support after launch?", a: "Yes. Every project includes free support for bugs and small fixes right after launch, and you can continue on a monthly managed support plan that covers updates, backups, security and small changes." },
-  { q: "Do you work with clients outside India?", a: "Yes. We currently work with clients in the US, UK, UAE and Australia, with calls scheduled in your time zone." },
-  { q: "Why choose you over a freelancer?", a: "A freelancer gives you one skill and one point of failure — if they're on leave or move on, your project stalls. We give you strategy, engineering and growth as one accountable team, with a backup for every role, and a company that will still be here next year." },
-  { q: "Can you help my business show up on ChatGPT or Google AI answers?", a: "Yes — this is folded into our Marketing & Growth service. We write clear, citable content, add proper schema markup, and build the kind of mentions AI tools actually reference, then check every month whether your business is showing up." },
+  { q: "Do you work with start-ups and established companies?", a: "Both. Start-ups usually begin with strategy, an MVP and a launch plan. Established businesses usually begin with a specific need, such as a new application, a marketing program or ongoing support, and add services over time." },
+  { q: "What does US-based versus outsourced mean in practice?", a: "US-based means your team works from the United States, in your time zone. Outsourced means an offshore team does the delivery work under a US lead. Most clients blend the two." },
+  { q: "How do you handle the time difference?", a: "Your US lead is available during your working day. When an offshore team is involved, you brief them at the end of your day and review progress when you return." },
+  { q: "Can I start with just one service?", a: "Yes. Many clients start with a single project, such as a website, an app or an SEO program, and add services as needs grow. Nothing requires you to buy the whole stack." },
+  { q: "Who owns the code, designs and content?", a: "[Confirm your IP and contract terms before publishing this answer.]" },
+  { q: "How is pricing structured?", a: "We work as fixed-scope projects, monthly retainers or dedicated team subscriptions, depending on the service. [Add your pricing ranges or starting points.]" },
+  { q: "Can you support systems you didn't build?", a: "Yes. We begin with an assessment of what's in place, then take over support, fix what's fragile and plan improvements in priority order." },
 ];
 
 /* =========================================================

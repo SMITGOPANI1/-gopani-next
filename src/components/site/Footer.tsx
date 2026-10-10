@@ -40,11 +40,8 @@ export default function Footer() {
           <div className="ftr-col">
             <span className="m">Company</span>
             <Link href="/about">About us</Link>
-            <Link href="/work">Our work</Link>
-            <Link href="/#insights">Blog</Link>
-            <Link href="/#audit">Free audit</Link>
             <Link href="/#faq">FAQ</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/#contact">Contact</Link>
           </div>
           <div className="ftr-col">
             <span className="m">Contact</span>
@@ -73,7 +70,6 @@ export default function Footer() {
             <Link href="/privacy#cookies">Cookie policy</Link>
           </span>
         </div>
-        <div className="big-word" aria-hidden="true">{CONFIG.name}</div>
       </div>
     </footer>
   );

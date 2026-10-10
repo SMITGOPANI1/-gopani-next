@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = SERVICE_BY_ID[slug];
   if (!service) return {};
   return {
-    title: `${service.title} — GOPANI`,
+    title: `${service.title} — KarmahubAI`,
     description: service.result,
   };
 }
@@ -24,8 +24,6 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
   if (!service) notFound();
 
   const index = SERVICES.findIndex((s) => s.id === service.id);
-  const prev = index > 0 ? SERVICES[index - 1] : null;
-  const next = index < SERVICES.length - 1 ? SERVICES[index + 1] : null;
   const number = String(index + 1).padStart(2, "0");
 
   return (
@@ -42,7 +40,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <p className="tag">{service.tagline}</p>
               <p className="desc">{service.description}</p>
               <div className="svc-detail-cta">
-                <Link href={`/contact?service=${service.id}`} className="btn btn-blue">{service.cta} <ArrowRight size={18} /></Link>
+                <Link href={`/?service=${service.id}#contact`} className="btn btn-blue">{service.cta} <ArrowRight size={18} /></Link>
                 <Link href="/services" className="link-u">All services</Link>
               </div>
             </div>
@@ -168,24 +166,12 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <p className="lead">Tell us where you are and what you need. We&apos;ll reply with options, a rough scope and a recommended first step.</p>
             </div>
             <div className="actions">
-              <Link href={`/contact?service=${service.id}`} className="btn btn-blue">{service.cta} <ArrowRight size={18} /></Link>
+              <Link href={`/?service=${service.id}#contact`} className="btn btn-blue">{service.cta} <ArrowRight size={18} /></Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-2">
-        <div className="wrap">
-          <div className="svc-detail-nav" style={{ borderTop: "none", paddingTop: 20, paddingBottom: 20 }}>
-            {prev ? (
-              <Link href={`/services/${prev.id}`} className="svc-nav-link">← <span>{prev.title}</span></Link>
-            ) : <span />}
-            {next ? (
-              <Link href={`/services/${next.id}`} className="svc-nav-link right"><span>Next · {next.title}</span> →</Link>
-            ) : <span />}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

@@ -18,7 +18,7 @@ export default function Industries({ limit, heading = true }: { limit?: number; 
         )}
         <div className="ind-grid" data-stagger>
           {industries.map((i) => (
-            <Link href="/work" className="ind" key={i.title}>
+            <Link href="/#contact" className="ind" key={i.title}>
               <span className="ic"><Ico name={i.icon} size={22} /></span>
               <div>
                 <h4>{i.title}</h4>

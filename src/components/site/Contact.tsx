@@ -1,39 +1,48 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { CONFIG, waLink, telHref, mailHref } from "@/config/site";
+import { useRouter } from "next/navigation";
+import { CONFIG, mailHref } from "@/config/site";
 import { SERVICES, SERVICE_BY_ID } from "@/config/services";
-import { emailOk, phoneOk, sendForm } from "@/lib/forms";
+import { emailOk, sendForm } from "@/lib/forms";
 import { SplitHeading } from "./Split";
-import { Phone, Mail, MapPin, Clock, ArrowRight } from "./icons";
-import { MessageCircle, Zap, Lock } from "lucide-react";
+import { ArrowRight } from "./icons";
 
-type Errors = Partial<Record<"name" | "phone" | "email", string>>;
+type Errors = Partial<Record<"name" | "email", string>>;
 
+const STAGES = [
+  "I'm starting something new",
+  "I'm building a product",
+  "I'm growing an existing business",
+  "I need help with a system I already have",
+  "Something else",
+];
+
+/** "Get in touch" section. Every "Book a Free Call" button links here (/#contact). */
 export default function Contact() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const preselected = SERVICE_BY_ID[searchParams.get("service") ?? ""]?.title;
-  const [service, setService] = useState(preselected ?? "Not sure yet");
+  const [service, setService] = useState(SERVICES[0].title);
   const [errors, setErrors] = useState<Errors>({});
   const [sending, setSending] = useState(false);
   const [failed, setFailed] = useState(false);
 
+  // "Discuss your …" buttons on service pages link to /?service=<id>#contact.
+  // Read it after mount (not via useSearchParams) so this section is server-rendered
+  // with the rest of the page and its scroll animations are set up with everything else.
   useEffect(() => {
+    const preselected = SERVICE_BY_ID[new URLSearchParams(window.location.search).get("service") ?? ""]?.title;
     if (preselected) setService(preselected); // eslint-disable-line react-hooks/set-state-in-effect -- sync from the ?service= link
-  }, [preselected]);
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const f = e.currentTarget;
     const fd = new FormData(f);
     const get = (k: string) => String(fd.get(k) ?? "").trim();
-    const data = { form: "Contact", name: get("name"), phone: get("phone"), email: get("email"), service: get("service"), message: get("message") };
+    const data = { form: "Contact", name: get("name"), email: get("email"), company: get("company"), stage: get("stage"), service: get("service"), message: get("message") };
 
     const errs: Errors = {};
     if (data.name.length < 2) errs.name = "Please enter your name";
-    if (!phoneOk(data.phone)) errs.phone = "Please enter a valid phone number";
     if (!emailOk(data.email)) errs.email = "Please enter a valid email";
     setErrors(errs);
     if (Object.keys(errs).length) {
@@ -48,10 +57,11 @@ export default function Contact() {
     if (!ok) { setFailed(true); return; }
 
     if (!CONFIG.formEndpoint) {
-      const msg = `New enquiry from the website\n\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nNeeds: ${data.service}\n\n${data.message}`;
-      window.open(waLink(msg), "_blank", "noopener");
+      // No form service set up yet: open the visitor's email app with the details filled in.
+      const body = `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nWhere we are: ${data.stage}\nNeed help with: ${data.service}\n\n${data.message}`;
+      window.open(`${mailHref}?subject=${encodeURIComponent(`New enquiry from ${data.name}`)}&body=${encodeURIComponent(body)}`, "_blank", "noopener");
     }
-    try { sessionStorage.setItem("gopani-name", data.name.split(" ")[0]); } catch {}
+    try { sessionStorage.setItem("karmahubai-name", data.name.split(" ")[0]); } catch {}
     router.push("/thank-you");
   }
 
@@ -59,76 +69,57 @@ export default function Contact() {
 
   return (
     <section id="contact" className="bg-ink">
-      <div className="wrap sec">
-        <div className="sec-head center">
-          <p className="m m-orange sec-num" data-reveal>13 — Let&apos;s talk</p>
-          <SplitHeading className="h-section" text="Let's build something that grows." />
-          <p className="lead" data-reveal>Tell us about your project — a few lines is enough to start. Free consultation, no pressure, and no generic sales pitch on the call.</p>
-        </div>
-
-        <div className="contact-grid">
-          <form className="form" onSubmit={onSubmit} noValidate data-reveal>
-            <h3>Send us a message</h3>
-            <div className="form-row">
-              <div>
-                <label className="lbl" htmlFor="cName">Your name</label>
-                <input className="fld" id="cName" name="name" type="text" autoComplete="name" placeholder="Rahul Sharma" required aria-invalid={!!errors.name} onInput={clear("name")} />
-                <span className="err">{errors.name}</span>
-              </div>
-              <div>
-                <label className="lbl" htmlFor="cPhone">Phone / WhatsApp</label>
-                <input className="fld" id="cPhone" name="phone" type="tel" autoComplete="tel" placeholder="+91 98765 43210" required aria-invalid={!!errors.phone} onInput={clear("phone")} />
-                <span className="err">{errors.phone}</span>
-              </div>
-            </div>
-            <div>
-              <label className="lbl" htmlFor="cEmail">Email</label>
-              <input className="fld" id="cEmail" name="email" type="email" autoComplete="email" placeholder="you@company.com" required aria-invalid={!!errors.email} onInput={clear("email")} />
-              <span className="err">{errors.email}</span>
-            </div>
-            <div>
-              <label className="lbl" htmlFor="cService">What do you need?</label>
-              <select className="fld" id="cService" name="service" value={service} onChange={(e) => setService(e.target.value)}>
-                <option>Not sure yet</option>
-                {SERVICES.map((s) => <option key={s.id}>{s.title}</option>)}
-              </select>
-            </div>
-            <div>
-              <label className="lbl" htmlFor="cMsg">Tell us about your project <span className="opt">(optional)</span></label>
-              <textarea className="fld" id="cMsg" name="message" rows={4} placeholder="A few lines about your business and goals" />
-            </div>
-            {failed && <p className="form-msg" role="alert">We couldn&apos;t send that. Please try again or message us on WhatsApp.</p>}
-            <div className="form-foot">
-              <span className="form-note"><Lock size={14} /> Your details are safe with us.</span>
-              <button type="submit" className="btn btn-blue" disabled={sending}>
-                {sending ? "Sending…" : "Send Message"} <ArrowRight size={18} />
-              </button>
-            </div>
-          </form>
-
-          <div className="side">
-            <div className="person-card" data-reveal data-delay="0.1">
-              <div className="top">
-                <span className="av">{CONFIG.founder.initials}</span>
-                <div>
-                  <b>{CONFIG.founder.name}</b>
-                  <span className="role">{CONFIG.founder.role}</span>
-                </div>
-              </div>
-              <p>Prefer to talk instead of filling a form? Reach me directly — I read every enquiry myself, and I&apos;ll tell you honestly if we&apos;re not the right fit for your project.</p>
-              <a href={telHref} className="contact-line"><Phone size={18} /> {CONFIG.phone}</a>
-              <a href={waLink()} className="contact-line wa" target="_blank" rel="noopener"><MessageCircle size={18} /> Chat on WhatsApp</a>
-              <a href={mailHref} className="contact-line"><Mail size={18} /> {CONFIG.email}</a>
-            </div>
-            <div className="promise" data-reveal data-delay="0.2"><Zap size={18} /> We reply within 24 hours, usually much faster.</div>
-            <div className="contact-meta" data-reveal data-delay="0.25">
-              {CONFIG.address && (
-                <div><MapPin size={16} /><a href={CONFIG.mapUrl} target="_blank" rel="noopener">{CONFIG.address}</a></div>
-              )}
-              <div><Clock size={16} /><span>{CONFIG.hours}</span></div>
-            </div>
+      <div className="wrap sec contact-grid">
+        <div className="contact-copy">
+          <p className="m m-orange" data-reveal>Get in touch</p>
+          <SplitHeading className="h-section" text="Tell us where you are. We'll map the path from there." />
+          <p className="lead" data-reveal>
+            A free consultation is a conversation about your goals, not a sales pitch. You&apos;ll leave with a clear
+            view of options, a rough scope and a recommended first step.
+          </p>
+          <div className="contact-info" data-reveal>
+            <a href={mailHref} className="contact-mail">{CONFIG.email}</a>
+            {CONFIG.address && <span>{CONFIG.address}</span>}
           </div>
         </div>
+
+        <form className="form" onSubmit={onSubmit} noValidate data-reveal data-delay="0.1">
+          <div>
+            <label className="lbl" htmlFor="cName">Name</label>
+            <input className="fld" id="cName" name="name" type="text" autoComplete="name" required aria-invalid={!!errors.name} onInput={clear("name")} />
+            <span className="err">{errors.name}</span>
+          </div>
+          <div>
+            <label className="lbl" htmlFor="cEmail">Work email</label>
+            <input className="fld" id="cEmail" name="email" type="email" autoComplete="email" required aria-invalid={!!errors.email} onInput={clear("email")} />
+            <span className="err">{errors.email}</span>
+          </div>
+          <div>
+            <label className="lbl" htmlFor="cCompany">Company</label>
+            <input className="fld" id="cCompany" name="company" type="text" autoComplete="organization" />
+          </div>
+          <div>
+            <label className="lbl" htmlFor="cStage">Where are you today?</label>
+            <select className="fld" id="cStage" name="stage" defaultValue={STAGES[1]}>
+              {STAGES.map((s) => <option key={s}>{s}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="lbl" htmlFor="cService">What do you need help with?</label>
+            <select className="fld" id="cService" name="service" value={service} onChange={(e) => setService(e.target.value)}>
+              {SERVICES.map((s) => <option key={s.id}>{s.title}</option>)}
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div>
+            <label className="lbl" htmlFor="cMsg">Tell us a little more</label>
+            <textarea className="fld" id="cMsg" name="message" rows={5} />
+          </div>
+          {failed && <p className="form-msg" role="alert">We couldn&apos;t send that. Please try again or email us at {CONFIG.email}.</p>}
+          <button type="submit" className="btn btn-blue form-submit" disabled={sending}>
+            {sending ? "Sending…" : "Book a Free Call"} <ArrowRight size={18} />
+          </button>
+        </form>
       </div>
     </section>
   );

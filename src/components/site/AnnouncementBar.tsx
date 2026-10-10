@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { CONFIG } from "@/config/site";
 import { ArrowRight, X } from "./icons";
 
-const KEY = "gopani-announce-closed";
+const KEY = "karmahubai-announce-closed";
 
 export default function AnnouncementBar() {
   const [hidden, setHidden] = useState(true); // hidden until we know the visitor hasn't closed it

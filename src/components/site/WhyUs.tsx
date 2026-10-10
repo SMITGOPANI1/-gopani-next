@@ -1,14 +1,8 @@
 import Image from "next/image";
-import { WHY, COMPARE } from "@/config/content";
+import { WHY } from "@/config/content";
 import { CONFIG } from "@/config/site";
 import { SplitHeading } from "./Split";
-import { Ico, Check, X, Minus } from "./icons";
-
-function Cell({ v }: { v: string }) {
-  if (v === "yes" || v === "always") return <span className="yes"><Check size={18} /> {v === "always" ? "Always" : "Yes"}</span>;
-  if (v === "sometimes") return <span className="so"><Minus size={18} /> Sometimes</span>;
-  return <span className="no"><X size={18} /> No</span>;
-}
+import { Ico } from "./icons";
 
 export default function WhyUs() {
   return (
@@ -34,26 +28,6 @@ export default function WhyUs() {
           ))}
         </div>
 
-        <div className="compare" data-reveal>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">What you get</th>
-                <th scope="col">Typical agency</th>
-                <th scope="col" className="us">{CONFIG.name}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {COMPARE.map((r) => (
-                <tr key={r.label}>
-                  <td>{r.label}</td>
-                  <td><Cell v={r.agency} /></td>
-                  <td className="us"><Cell v={r.us} /></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
       </div>
     </section>
   );

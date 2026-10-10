@@ -19,8 +19,8 @@ export default function Hero() {
             built properly, then gets found, ranked and turned into enquiries every single month after that.
           </p>
           <div className="hero-actions" data-reveal data-delay="0.35">
-            <Link href="/contact" className="btn btn-blue">Book a Free Call <ArrowRight size={18} /></Link>
-            <Link href="/work" className="btn btn-ghost">See Our Work <ArrowUpRight size={18} /></Link>
+            <Link href="/#contact" className="btn btn-blue">Book a Free Call <ArrowRight size={18} /></Link>
+            <Link href="/services" className="btn btn-ghost">Our Services <ArrowUpRight size={18} /></Link>
           </div>
           <div className="hero-proof" data-reveal data-delay="0.45">
             <span className="stars">

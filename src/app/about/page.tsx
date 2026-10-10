@@ -6,7 +6,7 @@ import { Handshake, UserRound, ChartColumn, KeyRound } from "lucide-react";
 import { ArrowRight } from "@/components/site/icons";
 
 export const metadata: Metadata = {
-  title: "About Us — GOPANI",
+  title: "About Us — KarmahubAI",
   description: "We're one team that builds a business's website, app or software, then grows it with marketing. Here's why, and who's behind it.",
 };
 
@@ -28,7 +28,7 @@ export default function AboutPage() {
             <p className="lead" data-reveal>
               {CONFIG.legalName} exists because every small business we talked to was stuck hiring one agency to build
               something and another to market it — paying twice, managing two relationships, and getting blamed by
-              each side whenever something didn&apos;t work. We built GOPANI to be the team that does both, properly,
+              each side whenever something didn&apos;t work. We built KarmahubAI to be the team that does both, properly,
               under one roof.
             </p>
           </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
                   <span className="role">{CONFIG.founder.role}</span>
                 </div>
               </div>
-              <p>Started GOPANI after watching too many good small businesses get let down by agencies that over-promised and under-reported. Answers enquiries personally — reach out any time.</p>
+              <p>Started KarmahubAI after watching too many good small businesses get let down by agencies that over-promised and under-reported. Answers enquiries personally — reach out any time.</p>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function AboutPage() {
               <p className="lead" style={{ color: "var(--on-dark)", maxWidth: 560, margin: "0 auto 24px" }}>
                 No pitch, no pressure — just a free call to talk through what you actually need.
               </p>
-              <Link href="/contact" className="btn btn-blue">Book a Free Call <ArrowRight size={18} /></Link>
+              <Link href="/#contact" className="btn btn-blue">Book a Free Call <ArrowRight size={18} /></Link>
             </div>
           </div>
         </div>

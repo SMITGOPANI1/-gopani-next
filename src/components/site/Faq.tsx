@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function Faq({
-  num = "12 — FAQ",
+  num = "08 — FAQ",
   title = "Questions, answered.",
   lead = "Cost, time, ownership and contracts. The things people ask before they call.",
 }: Props) {
@@ -25,7 +25,7 @@ export default function Faq({
           <div className="faq-cta" data-reveal>
             <b>Still have a question?</b>
             <span>Ask us on a free call. No pitch, just answers.</span>
-            <Link href="/contact" className="link-arrow">Book a Free Call <ArrowRight size={16} /></Link>
+            <Link href="/#contact" className="link-arrow">Book a Free Call <ArrowRight size={16} /></Link>
           </div>
         </div>
         <div className="split-r" data-stagger>
