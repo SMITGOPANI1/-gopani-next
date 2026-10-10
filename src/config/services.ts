@@ -10,6 +10,7 @@ export type Glance = {
 export type Deliverable = { title: string; text: string };
 export type ProcessStep = { title: string; text: string; youGet: string };
 export type Outcome = { title: string; text: string };
+export type Problem = { title: string; text: string };
 export type ServiceFaq = { q: string; a: string };
 
 export type Service = {
@@ -22,7 +23,7 @@ export type Service = {
   tagline: string;
   description: string;
   glance: Glance;
-  problems: string[]; // "Sound familiar?" — the problems this service solves
+  problems: Problem[]; // "The problems we solve"
   deliverables: Deliverable[]; // "What we deliver"
   tools: string[]; // "Typical tools and methods" chips
   process: ProcessStep[]; // "How it works"
@@ -63,10 +64,10 @@ export const SERVICES: Service[] = [
       workWith: "A strategy lead and a solutions architect",
     },
     problems: [
-      "Three vendors have given you three different proposals, and you can't tell which one is right.",
-      "Your systems grew by accident and nobody can draw the full picture.",
-      "You need a budget and timeline for investors or the board, and you only have a guess.",
-      "You're debating build versus buy, or cloud versus staying put, without clear criteria.",
+      { title: "Conflicting vendor proposals", text: "Three vendors, three different answers, and no neutral way to tell which one is right." },
+      { title: "No clear picture of your systems", text: "Your stack grew one tool at a time, and nobody can map how it all fits together." },
+      { title: "A budget built on guesswork", text: "Investors or the board want a cost and timeline you can defend, not an estimate." },
+      { title: "Big decisions without criteria", text: "Build or buy, cloud or on-premise: the debate goes round in circles without a framework." },
     ],
     deliverables: [
       { title: "Current-state assessment", text: "We map your applications, data, vendors and people, then flag risk, duplication and hidden cost." },
@@ -113,10 +114,10 @@ export const SERVICES: Service[] = [
       workWith: "A product manager, a designer, engineers and QA",
     },
     problems: [
-      "Your team runs on spreadsheets and email chains that break as you grow.",
-      "Your legacy system works, but nobody wants to touch it.",
-      "Customers are asking for an app or portal you can't deliver yet.",
-      "A previous vendor left code that nobody understands.",
+      { title: "Spreadsheets running the business", text: "Work lives in spreadsheets and email threads that break a little more as you grow." },
+      { title: "A legacy system nobody dares touch", text: "It still works, but every change feels risky and slow." },
+      { title: "Customers want an app you don't have", text: "Clients are asking for a portal or mobile app you can't offer yet." },
+      { title: "Inherited code nobody understands", text: "A previous vendor left a codebase with no documentation and no owner." },
     ],
     deliverables: [
       { title: "Web applications and portals", text: "Customer portals, dashboards, workflow tools and SaaS products, built for the browsers and devices your users have." },
@@ -163,10 +164,10 @@ export const SERVICES: Service[] = [
       workWith: "A venture lead, a product designer, engineers and a marketer",
     },
     problems: [
-      "You have an idea but no way to tell whether people will pay for it.",
-      "You've been quoted for a large build before validating anything.",
-      "You need a product, a website and a launch plan at once, on one small budget.",
-      "You're strong on one side, technical or commercial, and missing the other half of the team.",
+      { title: "An idea with no proof of demand", text: "You believe in it, but you don't yet know whether people will pay for it." },
+      { title: "A big quote before any validation", text: "You've been asked to fund a full build before testing a single assumption." },
+      { title: "Everything needed at once", text: "Product, website and launch plan, all on one small budget." },
+      { title: "Half a founding team", text: "You're strong on either the technical or the commercial side, and missing the other." },
     ],
     deliverables: [
       { title: "Validation sprint", text: "Customer interviews, a competitor review and a demand test, so you know what to build first." },
@@ -213,10 +214,10 @@ export const SERVICES: Service[] = [
       workWith: "A solutions architect and cloud and DevOps engineers",
     },
     problems: [
-      "The demo is great, but nobody trusts it with real customers yet.",
-      "Deployments are manual, and every release is stressful.",
-      "Your cloud bill keeps rising and nobody can explain why.",
-      "Outages happen and you find out from your customers.",
+      { title: "A demo that isn't production-ready", text: "It impresses in a meeting, but nobody trusts it with real customers yet." },
+      { title: "Stressful manual releases", text: "Deployments are done by hand, and every release feels like a risk." },
+      { title: "A cloud bill that keeps climbing", text: "Costs rise month after month, and nobody can explain why." },
+      { title: "Customers spot outages first", text: "When something breaks, you hear about it from users, not from your monitoring." },
     ],
     deliverables: [
       { title: "Proof of concept", text: "A focused build that tests the riskiest technical assumption quickly and cheaply, with clear pass or fail criteria." },
@@ -263,10 +264,10 @@ export const SERVICES: Service[] = [
       workWith: "An engagement lead, architects, a delivery manager and pod engineers",
     },
     problems: [
-      "Every new customer makes the system slower.",
-      "Your engineers spend more time firefighting than building.",
-      "You need to hire faster than you can recruit.",
-      "Marketing brings leads in, but operations can't absorb them.",
+      { title: "Growth is slowing the system down", text: "Every new customer makes the platform a little slower." },
+      { title: "Engineers stuck firefighting", text: "Your team spends more time fixing problems than building the roadmap." },
+      { title: "Hiring can't keep pace", text: "You need people faster than you can recruit them." },
+      { title: "Operations can't absorb demand", text: "Marketing brings leads in, but delivery can't keep up." },
     ],
     deliverables: [
       { title: "Scale-readiness review", text: "A frank assessment of what will break first at two, five and ten times your current volume." },
@@ -313,10 +314,10 @@ export const SERVICES: Service[] = [
       workWith: "A service delivery manager, support engineers and a dedicated pod",
     },
     problems: [
-      "Support depends on one person who might leave.",
-      "Updates and patches get postponed until something breaks.",
-      "Issues arrive outside office hours and wait until morning.",
-      "You need developers for a year, not forever.",
+      { title: "Support rests on one person", text: "If they leave or fall ill, nobody else knows how things work." },
+      { title: "Patches wait until something breaks", text: "Updates keep getting postponed, and the risk quietly builds up." },
+      { title: "No cover outside office hours", text: "Issues raised in the evening wait until the next morning." },
+      { title: "Developers for a year, not forever", text: "You need extra engineering capacity without permanent hires." },
     ],
     deliverables: [
       { title: "Helpdesk and application support", text: "Tiered support for users and applications, with tracked tickets and clear response targets." },
@@ -365,10 +366,10 @@ export const SERVICES: Service[] = [
       workWith: "A creative director, designer, copywriter, developer and social media manager",
     },
     problems: [
-      "Your website was built years ago and no longer reflects the business.",
-      "Your social accounts post rarely and sound different on every channel.",
-      "You have a product or app but no content that explains it.",
-      "Content gets made in bursts, then stops.",
+      { title: "An outdated website", text: "It was built years ago and no longer reflects what the business does today." },
+      { title: "Inconsistent social presence", text: "Posts are rare, and every channel sounds like a different company." },
+      { title: "A product nobody explains", text: "You have a product or app, but no content that shows why it matters." },
+      { title: "Content in bursts", text: "A flurry of posts, then months of silence." },
     ],
     deliverables: [
       { title: "Website design and build", text: "A fast, mobile-first site with clear service pages, built on a content system your team can edit." },
@@ -415,10 +416,10 @@ export const SERVICES: Service[] = [
       workWith: "A growth strategist, SEO and paid media specialists and an analyst",
     },
     problems: [
-      "You spend on ads but can't say which ones bring customers.",
-      "Your site doesn't show up when buyers search, on Google or in AI answers.",
-      "Traffic arrives, but few visitors enquire.",
-      "Reports show numbers that don't connect to revenue.",
+      { title: "Ad spend you can't trace", text: "Money goes into ads, but you can't say which ones bring customers." },
+      { title: "Invisible in search", text: "Buyers can't find you on Google or in AI answers like ChatGPT." },
+      { title: "Visitors who never enquire", text: "Traffic arrives, but very few people get in touch." },
+      { title: "Reports disconnected from revenue", text: "Dashboards are full of numbers that don't tie back to sales." },
     ],
     deliverables: [
       { title: "Technical and content SEO", text: "Fixes to site health and structure, plus content that targets what your buyers actually search for — and that AI tools like ChatGPT and Google AI Overviews can cite." },

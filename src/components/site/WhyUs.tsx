@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { WHY } from "@/config/content";
-import { CONFIG } from "@/config/site";
 import { SplitHeading } from "./Split";
 import { Ico } from "./icons";
 
@@ -9,7 +8,6 @@ export default function WhyUs() {
     <section id="why-us" className="bg-white">
       <div className="wrap sec">
         <div className="sec-head">
-          <p className="m m-blue sec-num" data-reveal>05 — Why {CONFIG.name}</p>
           <SplitHeading className="h-section" text="Specific promises, not slogans." />
           <p className="lead" data-reveal>You are comparing agencies. Here is exactly what is different about working with us.</p>
         </div>

@@ -32,7 +32,6 @@ export default function Testimonials() {
     <section id="reviews" className="bg-2">
       <div className="wrap sec">
         <div className="sec-head center">
-          <p className="m m-blue sec-num" data-reveal>07 — Client reviews</p>
           <SplitHeading className="h-section" text="Don't take our word for it." />
           <p className="lead" data-reveal>Every quote below is from a named client with a real company — no stock photos, no Lorem Ipsum. If a number sounds big, ask us for the case study behind it.</p>
         </div>

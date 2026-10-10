@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
-import AnnouncementBar from "@/components/site/AnnouncementBar";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import Floating from "@/components/site/Floating";
@@ -72,7 +71,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd).replace(/</g, "\\u003c") }}
         />
         <SmoothScroll />
-        <AnnouncementBar />
         <Header />
         <main>{children}</main>
         <Footer />

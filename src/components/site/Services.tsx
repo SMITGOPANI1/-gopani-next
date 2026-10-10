@@ -24,7 +24,6 @@ export default function Services({ limit, heading = true }: { limit?: number; he
       <div className="wrap sec">
         {heading && (
           <div className="sec-head">
-            <p className="m m-blue sec-num" data-reveal>02 — What we do</p>
             <SplitHeading className="h-section" text="We build it. Then we grow it." />
             <p className="lead" data-reveal>Everything your business needs online, under one roof — so you never have to find, brief and manage a second vendor. Open any service below to see exactly how it runs, what you get and what changes for you.</p>
           </div>
@@ -33,7 +32,7 @@ export default function Services({ limit, heading = true }: { limit?: number; he
         <div className="svc-groups">
           <div>
             <div className="svc-group-head" data-reveal>
-              <h3><i>01</i>{GROUPS.build.label}</h3>
+              <h3>{GROUPS.build.label}</h3>
               <span className="pill blue">{GROUPS.build.kicker}</span>
               <p>{GROUPS.build.blurb}</p>
             </div>
@@ -43,7 +42,7 @@ export default function Services({ limit, heading = true }: { limit?: number; he
           </div>
           <div>
             <div className="svc-group-head" data-reveal>
-              <h3><i>02</i>{GROUPS.grow.label}</h3>
+              <h3>{GROUPS.grow.label}</h3>
               <span className="pill orange">{GROUPS.grow.kicker}</span>
               <p>{GROUPS.grow.blurb}</p>
             </div>

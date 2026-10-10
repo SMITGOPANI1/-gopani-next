@@ -8,7 +8,6 @@ export default function ProblemSolution() {
     <section id="problems" className="bg-2">
       <div className="wrap sec">
         <div className="sec-head center">
-          <p className="m m-blue sec-num" data-reveal>01 — Sound familiar?</p>
           <SplitHeading className="h-section" text="Why businesses come to us." />
           <p className="lead" data-reveal>Almost every business owner we talk to has at least one of these three problems — usually because their website and their marketing were never built by the same team in the first place. We fix all three, together.</p>
         </div>

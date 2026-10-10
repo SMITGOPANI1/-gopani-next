@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
  *  - data-split             heading words slide up out of a mask (see <Split/>)
  *  - data-count / -prefix / -suffix   number counts up
  *  - data-parallax="40"     drifts vertically while scrolling
- * Also: sticky header shadow, scroll progress bar, back-to-top and mobile CTA.
+ * Also: sticky header shadow, back-to-top and mobile CTA.
  */
 export default function Motion() {
   const pathname = usePathname();
@@ -31,15 +31,12 @@ export default function Motion() {
 
     /* Scroll-position UI (works even with reduced motion) */
     const header = document.getElementById("site-header");
-    const progress = document.getElementById("progress");
     const toTop = document.getElementById("toTop");
     const mobileCta = document.getElementById("mobileCta");
     const contact = document.getElementById("contact");
     const onScroll = () => {
       const y = window.scrollY;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
       header?.classList.toggle("scrolled", y > 12);
-      if (progress) progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
       toTop?.classList.toggle("show", y > 900);
       if (mobileCta) {
         const r = contact?.getBoundingClientRect();
@@ -83,7 +80,8 @@ export default function Motion() {
           gsap.fromTo(
             kids,
             { y: 36, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", stagger: 0.08, scrollTrigger: { trigger: group, start: "top 88%", once: true } },
+            // clearProps: drop GSAP's inline transform afterwards so CSS :hover transforms still work
+            { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", stagger: 0.08, clearProps: "transform", scrollTrigger: { trigger: group, start: "top 88%", once: true } },
           );
         });
 

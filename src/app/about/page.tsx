@@ -23,7 +23,6 @@ export default function AboutPage() {
       <section>
         <div className="wrap sec">
           <div className="sec-head">
-            <p className="m m-blue sec-num" data-reveal>About us</p>
             <h1 className="h-section" data-reveal>Built by people who got tired of the two-vendor problem.</h1>
             <p className="lead" data-reveal>
               {CONFIG.legalName} exists because every small business we talked to was stuck hiring one agency to build
@@ -54,7 +53,6 @@ export default function AboutPage() {
       <section className="bg-white">
         <div className="wrap sec">
           <div className="sec-head">
-            <p className="m m-blue sec-num" data-reveal>What we actually believe</p>
             <h2 className="h-section-sm" data-reveal>Not slogans. Working rules.</h2>
           </div>
           <div className="why-grid" data-stagger>

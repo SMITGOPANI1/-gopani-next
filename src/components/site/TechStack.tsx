@@ -1,12 +1,11 @@
 import { STACK } from "@/config/content";
 import { SplitHeading } from "./Split";
 
-export default function TechStack() {
+export default function TechStack({ className }: { className?: string } = {}) {
   return (
-    <section id="stack">
+    <section id="stack" className={className}>
       <div className="wrap sec">
         <div className="sec-head">
-          <p className="m m-blue sec-num" data-reveal>07 — Our toolbox</p>
           <SplitHeading className="h-section-sm" text="Modern tools. Trusted tech." />
           <p className="lead" data-reveal>No outdated platforms held together with plugins. We build and market on the same tools your next CTO or growth hire will already know.</p>
         </div>

@@ -7,6 +7,7 @@ import { SERVICES, SERVICE_BY_ID } from "@/config/services";
 import { emailOk, sendForm } from "@/lib/forms";
 import { SplitHeading } from "./Split";
 import { ArrowRight } from "./icons";
+import { Mail, MapPin, Clock, Lock } from "lucide-react";
 
 type Errors = Partial<Record<"name" | "email", string>>;
 
@@ -16,6 +17,12 @@ const STAGES = [
   "I'm growing an existing business",
   "I need help with a system I already have",
   "Something else",
+];
+
+const NEXT_STEPS = [
+  { title: "Send the form", text: "Tell us where you are and what you need." },
+  { title: "Free 30-minute call", text: "We listen, ask questions and share honest options." },
+  { title: "Clear written plan", text: "Scope, timeline and a fixed price — yours to keep." },
 ];
 
 /** "Get in touch" section. Every "Book a Free Call" button links here (/#contact). */
@@ -71,38 +78,72 @@ export default function Contact() {
     <section id="contact" className="bg-ink">
       <div className="wrap sec contact-grid">
         <div className="contact-copy">
-          <p className="m m-orange" data-reveal>Get in touch</p>
           <SplitHeading className="h-section" text="Tell us where you are. We'll map the path from there." />
           <p className="lead" data-reveal>
             A free consultation is a conversation about your goals, not a sales pitch. You&apos;ll leave with a clear
             view of options, a rough scope and a recommended first step.
           </p>
+
+          <ol className="contact-steps" data-stagger>
+            {NEXT_STEPS.map((step, i) => (
+              <li key={step.title}>
+                <span className="n">{i + 1}</span>
+                <div>
+                  <b>{step.title}</b>
+                  <span>{step.text}</span>
+                </div>
+              </li>
+            ))}
+          </ol>
+
           <div className="contact-info" data-reveal>
-            <a href={mailHref} className="contact-mail">{CONFIG.email}</a>
-            {CONFIG.address && <span>{CONFIG.address}</span>}
+            <a href={mailHref} className="contact-item">
+              <i><Mail size={18} /></i>
+              <div><small>Email us</small>{CONFIG.email}</div>
+            </a>
+            {CONFIG.address && (
+              <div className="contact-item">
+                <i><MapPin size={18} /></i>
+                <div><small>Office</small>{CONFIG.address}</div>
+              </div>
+            )}
+            {CONFIG.hours && (
+              <div className="contact-item">
+                <i><Clock size={18} /></i>
+                <div><small>Hours</small>{CONFIG.hours}</div>
+              </div>
+            )}
           </div>
         </div>
 
         <form className="form" onSubmit={onSubmit} noValidate data-reveal data-delay="0.1">
-          <div>
-            <label className="lbl" htmlFor="cName">Name</label>
-            <input className="fld" id="cName" name="name" type="text" autoComplete="name" required aria-invalid={!!errors.name} onInput={clear("name")} />
-            <span className="err">{errors.name}</span>
+          <div className="form-head">
+            <h3>Book your free consultation</h3>
+            <p>Takes under a minute. We reply within one business day.</p>
           </div>
-          <div>
-            <label className="lbl" htmlFor="cEmail">Work email</label>
-            <input className="fld" id="cEmail" name="email" type="email" autoComplete="email" required aria-invalid={!!errors.email} onInput={clear("email")} />
-            <span className="err">{errors.email}</span>
+          <div className="form-row">
+            <div>
+              <label className="lbl" htmlFor="cName">Name</label>
+              <input className="fld" id="cName" name="name" type="text" autoComplete="name" placeholder="Your full name" required aria-invalid={!!errors.name} onInput={clear("name")} />
+              <span className="err">{errors.name}</span>
+            </div>
+            <div>
+              <label className="lbl" htmlFor="cEmail">Work email</label>
+              <input className="fld" id="cEmail" name="email" type="email" autoComplete="email" placeholder="you@company.com" required aria-invalid={!!errors.email} onInput={clear("email")} />
+              <span className="err">{errors.email}</span>
+            </div>
           </div>
-          <div>
-            <label className="lbl" htmlFor="cCompany">Company</label>
-            <input className="fld" id="cCompany" name="company" type="text" autoComplete="organization" />
-          </div>
-          <div>
-            <label className="lbl" htmlFor="cStage">Where are you today?</label>
-            <select className="fld" id="cStage" name="stage" defaultValue={STAGES[1]}>
-              {STAGES.map((s) => <option key={s}>{s}</option>)}
-            </select>
+          <div className="form-row">
+            <div>
+              <label className="lbl" htmlFor="cCompany">Company <span className="opt">(optional)</span></label>
+              <input className="fld" id="cCompany" name="company" type="text" autoComplete="organization" placeholder="Company name" />
+            </div>
+            <div>
+              <label className="lbl" htmlFor="cStage">Where are you today?</label>
+              <select className="fld" id="cStage" name="stage" defaultValue={STAGES[1]}>
+                {STAGES.map((s) => <option key={s}>{s}</option>)}
+              </select>
+            </div>
           </div>
           <div>
             <label className="lbl" htmlFor="cService">What do you need help with?</label>
@@ -112,13 +153,14 @@ export default function Contact() {
             </select>
           </div>
           <div>
-            <label className="lbl" htmlFor="cMsg">Tell us a little more</label>
-            <textarea className="fld" id="cMsg" name="message" rows={5} />
+            <label className="lbl" htmlFor="cMsg">Tell us a little more <span className="opt">(optional)</span></label>
+            <textarea className="fld" id="cMsg" name="message" rows={4} placeholder="Your goals, timeline, budget range — whatever helps." />
           </div>
           {failed && <p className="form-msg" role="alert">We couldn&apos;t send that. Please try again or email us at {CONFIG.email}.</p>}
           <button type="submit" className="btn btn-blue form-submit" disabled={sending}>
             {sending ? "Sending…" : "Book a Free Call"} <ArrowRight size={18} />
           </button>
+          <p className="form-note"><Lock size={14} /> Your details stay private. No spam, ever.</p>
         </form>
       </div>
     </section>

@@ -4,13 +4,11 @@ import { SplitHeading } from "./Split";
 import { ArrowRight } from "./icons";
 
 type Props = {
-  num?: string;
   title?: string;
   lead?: string;
 };
 
 export default function Faq({
-  num = "08 — FAQ",
   title = "Questions, answered.",
   lead = "Cost, time, ownership and contracts. The things people ask before they call.",
 }: Props) {
@@ -19,7 +17,6 @@ export default function Faq({
     <section id="faq">
       <div className="wrap sec split">
         <div className="split-l">
-          <p className="m m-blue sec-num" data-reveal>{num}</p>
           <SplitHeading className="h-section-sm" text={title} />
           <p className="lead" data-reveal>{lead}</p>
           <div className="faq-cta" data-reveal>

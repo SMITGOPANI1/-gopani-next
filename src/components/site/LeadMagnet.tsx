@@ -31,7 +31,6 @@ export default function LeadMagnet() {
       <div className="wrap">
         <div className="magnet" data-reveal>
           <div>
-            <p className="m m-orange sec-num" style={{ marginBottom: 16 }}>Free resource</p>
             <h2>Is your website losing customers?</h2>
             <p className="lead">Most small-business websites lose customers to slow load times, confusing navigation or invisible SEO — and nobody ever tells the owner. Get a free, honest audit of your site&apos;s speed, SEO and design, delivered within 48 hours. No strings attached, even if you never call us again.</p>
             <ul>

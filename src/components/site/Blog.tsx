@@ -11,7 +11,6 @@ export default function Blog() {
     <section id="insights" className="bg-2">
       <div className="wrap sec">
         <div className="sec-head">
-          <p className="m m-blue sec-num" data-reveal>11 — Insights</p>
           <SplitHeading className="h-section" text="Learn what works." />
           <p className="lead" data-reveal>A few of the questions we get asked most, answered properly. Full articles are coming soon.</p>
         </div>

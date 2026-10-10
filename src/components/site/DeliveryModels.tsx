@@ -6,7 +6,6 @@ export default function DeliveryModels() {
     <section id="models" className="bg-ink">
       <div className="wrap sec">
         <div className="sec-head">
-          <p className="m m-orange sec-num" data-reveal>10 — Ways to work with us</p>
           <SplitHeading className="h-section-sm" text="Choose how the work happens." />
           <p className="lead" data-reveal>Every service on this site can run on any of these three models. Start with the one that fits your budget and risk, and change it as you grow.</p>
         </div>

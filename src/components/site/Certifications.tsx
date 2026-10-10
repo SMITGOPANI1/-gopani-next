@@ -6,7 +6,6 @@ export default function Certifications() {
     <section id="trust" className="bg-white">
       <div className="wrap sec">
         <div className="sec-head center">
-          <p className="m m-blue sec-num" data-reveal>09 — Trust</p>
           <SplitHeading className="h-section-sm" text="Certified where it counts." />
           <p className="lead" data-reveal>We only list credentials we actually hold — not claims we can&apos;t back up if you ask to see them.</p>
         </div>

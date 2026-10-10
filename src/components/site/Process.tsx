@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { PROCESS, PROCESS_NAME } from "@/config/content";
+import { PROCESS } from "@/config/content";
 import { SplitHeading } from "./Split";
 import { ArrowRight } from "./icons";
 
@@ -10,7 +10,6 @@ export default function Process() {
     <section id="process" aria-label="How we work" className="bg-2">
       <div className="wrap sec">
         <div className="sec-head">
-          <p className="m m-blue sec-num" data-reveal>04 — {PROCESS_NAME}</p>
           <SplitHeading className="h-section" text="Five steps. One team, start to finish." />
           <p className="lead" data-reveal>No handoffs between a &ldquo;build&rdquo; vendor and a &ldquo;grow&rdquo; vendor — the same people who design and build your project are the ones who market it afterwards.</p>
         </div>

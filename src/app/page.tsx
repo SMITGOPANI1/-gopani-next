@@ -1,8 +1,6 @@
 import Hero from "@/components/site/Hero";
-import ClientLogos from "@/components/site/ClientLogos";
 import ProblemSolution from "@/components/site/ProblemSolution";
 import Services from "@/components/site/Services";
-import Stats from "@/components/site/Stats";
 import Process from "@/components/site/Process";
 import WhyUs from "@/components/site/WhyUs";
 import Industries from "@/components/site/Industries";
@@ -29,14 +27,12 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
       />
       <Hero />
-      <ClientLogos />
       <ProblemSolution />
       <Services />
-      <Stats />
       <Process />
       <WhyUs />
       <Industries limit={6} />
-      <TechStack />
+      <TechStack className="bg-2" />
       <Faq />
       <Contact />
     </>

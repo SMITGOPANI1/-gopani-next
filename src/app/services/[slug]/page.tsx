@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SERVICES, SERVICE_BY_ID } from "@/config/services";
-import { Ico, ArrowRight } from "@/components/site/icons";
+import { ArrowRight } from "@/components/site/icons";
+import { SplitHeading } from "@/components/site/Split";
+import { MessagesSquare, FileSearch, Boxes, ClipboardCheck, Send } from "lucide-react";
+
+// One icon per process step, in order (every service has five steps)
+const PROCESS_ICONS = [MessagesSquare, FileSearch, Boxes, ClipboardCheck, Send];
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.id }));
@@ -23,45 +28,36 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
   const service = SERVICE_BY_ID[slug];
   if (!service) notFound();
 
-  const index = SERVICES.findIndex((s) => s.id === service.id);
-  const number = String(index + 1).padStart(2, "0");
-
   return (
     <>
       <section className="bg-2">
         <div className="wrap sec">
           <div className="svc-hero-grid">
             <div className="svc-hero-copy">
-              <div className="kicker">
-                <i><Ico name={service.icon} size={20} /></i>
-                <span className="m m-blue">Service {number} · {service.phase}</span>
-              </div>
-              <h1 className="h-section">{service.title}</h1>
-              <p className="tag">{service.tagline}</p>
-              <p className="desc">{service.description}</p>
-              <div className="svc-detail-cta">
+              {/* Same entrance as the homepage hero: words slide up, then the rest rises in */}
+              <SplitHeading as="h1" className="h-section" text={service.title} />
+              <p className="tag" data-reveal data-delay="0.15">{service.tagline}</p>
+              <p className="desc" data-reveal data-delay="0.25">{service.description}</p>
+              <div className="svc-detail-cta" data-reveal data-delay="0.35">
                 <Link href={`/?service=${service.id}#contact`} className="btn btn-blue">{service.cta} <ArrowRight size={18} /></Link>
-                <Link href="/services" className="link-u">All services</Link>
               </div>
             </div>
-            <div className="svc-glance">
-              <p className="m m-muted" style={{ padding: "16px 0 4px" }}>At a glance</p>
-              <div className="svc-glance-row">
-                <p className="m m-blue">Best for</p>
-                <p>{service.glance.bestFor}</p>
-              </div>
-              <div className="svc-glance-row">
-                <p className="m m-blue">Starting point</p>
-                <p>{service.glance.startingPoint}</p>
-              </div>
-              <div className="svc-glance-row">
-                <p className="m m-blue">Delivery</p>
-                <p>{service.glance.delivery}</p>
-              </div>
-              <div className="svc-glance-row">
-                <p className="m m-blue">You&apos;ll work with</p>
-                <p>{service.glance.workWith}</p>
-              </div>
+            <div className="svc-glance" data-reveal data-delay="0.2">
+              <p className="m svc-glance-head">At a glance</p>
+              {[
+                ["Best for", service.glance.bestFor],
+                ["Starting point", service.glance.startingPoint],
+                ["Delivery", service.glance.delivery],
+                ["You'll work with", service.glance.workWith],
+              ].map(([label, value], i) => (
+                <div className="svc-glance-row" key={label}>
+                  <span className="svc-glance-num">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <p className="m">{label}</p>
+                    <p>{value}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -70,11 +66,15 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
       <section className="bg-white">
         <div className="wrap sec">
           <div className="sec-head">
-            <p className="m m-blue sec-num" data-reveal>Sound familiar?</p>
-            <h2 className="h-section-sm">The problems this service is built to solve.</h2>
+            <h2 className="h-section-sm">The problems we solve.</h2>
           </div>
           <div className="svc-problems-grid" data-stagger>
-            {service.problems.map((p) => <p className="svc-problem" key={p}>{p}</p>)}
+            {service.problems.map((p) => (
+              <div className="svc-problem" key={p.title}>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -82,7 +82,6 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
       <section id="deliver">
         <div className="wrap sec">
           <div className="sec-head">
-            <p className="m m-blue sec-num" data-reveal>What we deliver</p>
             <h2 className="h-section-sm">Six things you can point to when we are done.</h2>
           </div>
           <div className="svc-deliver-grid" data-stagger>
@@ -103,23 +102,41 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <section className="bg-ink">
-        <div className="wrap sec">
-          <div className="sec-head">
-            <p className="m m-orange sec-num" data-reveal>How it works</p>
-            <h2 className="h-section-sm">Five steps, each with something you can review.</h2>
+      <section className="bg-ink proc-sec">
+        <div className="wrap sec proc">
+          <div className="proc-copy">
+            <div className="sec-head">
+              <h2 className="h-section-sm">Five steps, each with something you can review.</h2>
+            </div>
+            <ol className="proc-list" data-stagger>
+              {service.process.map((step, i) => (
+                <li key={step.title}>
+                  <span className="proc-n">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
-          <div>
-            {service.process.map((step, i) => (
-              <div className="svc-process-row" key={step.title}>
-                <div className="svc-process-step">Step {String(i + 1).padStart(2, "0")}</div>
-                <div className="svc-process-body">
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                  <p className="get"><b>You get</b>{step.youGet}</p>
+          <div className="proc-visual" aria-hidden="true">
+            <svg className="proc-rail" viewBox="0 0 100 85" preserveAspectRatio="none">
+              <line x1="15" y1="74" x2="89" y2="23" />
+            </svg>
+            {service.process.map((step, i) => {
+              const StepIcon = PROCESS_ICONS[i % PROCESS_ICONS.length];
+              return (
+                <div className="proc-node" key={step.title} style={{ "--i": i } as React.CSSProperties}>
+                  <div className="proc-label">
+                    <b>{String(i + 1).padStart(2, "0")}</b>
+                    <span>{step.title}</span>
+                  </div>
+                  <div className="proc-tile" />
+                  <StepIcon className="proc-icon" size={40} strokeWidth={1.5} />
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -127,8 +144,8 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
       <section className="bg-white">
         <div className="wrap sec">
           <div className="sec-head">
-            <p className="m m-blue sec-num" data-reveal>What changes for you</p>
-            <h2 className="h-section-sm">The result, in plain terms.</h2>
+            <h2 className="h-section-sm">What changes for you?</h2>
+            <p className="lead">The result, in plain terms.</p>
           </div>
           <div className="svc-outcomes-grid" data-stagger>
             {service.outcomes.map((o) => (
@@ -142,12 +159,12 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
       </section>
 
       <section id="faq" className="bg-2">
-        <div className="wrap sec split">
-          <div className="split-l">
-            <p className="m m-blue sec-num" data-reveal>FAQ</p>
-            <h2 className="h-section-sm">Common questions.</h2>
+        <div className="wrap sec svc-faq">
+          <div className="sec-head center">
+            <h2 className="h-section-sm">FAQ</h2>
+            <p className="lead">Quick answers to what clients ask us most about {service.title}.</p>
           </div>
-          <div className="split-r" data-stagger>
+          <div className="svc-faq-list" data-stagger>
             {service.faqs.map((f, i) => (
               <details className="faq" key={f.q} open={i === 0}>
                 <summary>{f.q}</summary>
@@ -157,21 +174,6 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
           </div>
         </div>
       </section>
-
-      <section className="bg-ink">
-        <div className="wrap sec" style={{ paddingTop: 64, paddingBottom: 64 }}>
-          <div className="svc-cta-row">
-            <div className="copy">
-              <h2 className="h-section-sm">Talk to us about {service.title}.</h2>
-              <p className="lead">Tell us where you are and what you need. We&apos;ll reply with options, a rough scope and a recommended first step.</p>
-            </div>
-            <div className="actions">
-              <Link href={`/?service=${service.id}#contact`} className="btn btn-blue">{service.cta} <ArrowRight size={18} /></Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </>
   );
 }
