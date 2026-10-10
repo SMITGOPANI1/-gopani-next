@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { INDUSTRIES } from "@/config/content";
 import { SplitHeading } from "./Split";
-import { Ico, ArrowUpRight, ArrowRight } from "./icons";
+import { Ico, ArrowUpRight } from "./icons";
 
 /** Section 06 on the homepage (a short teaser); the full grid lives on /industries. */
 export default function Industries({ limit, heading = true }: { limit?: number; heading?: boolean } = {}) {
   const industries = limit ? INDUSTRIES.slice(0, limit) : INDUSTRIES;
   return (
-    <section id="industries">
-      <div className="wrap sec">
+    <section id="industries" className="ind-sec">
+      <div className={`wrap sec${limit ? " ind-teaser" : ""}`}>
         {heading && (
           <div className="sec-head">
             <SplitHeading className="h-section" text="We understand your business." />
@@ -27,11 +27,6 @@ export default function Industries({ limit, heading = true }: { limit?: number; 
             </Link>
           ))}
         </div>
-        {limit && (
-          <div className="center-btn" data-reveal>
-            <Link href="/industries" className="btn btn-ghost">See all industries <ArrowRight size={18} /></Link>
-          </div>
-        )}
       </div>
     </section>
   );

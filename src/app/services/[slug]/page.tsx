@@ -4,10 +4,30 @@ import { notFound } from "next/navigation";
 import { SERVICES, SERVICE_BY_ID } from "@/config/services";
 import { ArrowRight } from "@/components/site/icons";
 import { SplitHeading } from "@/components/site/Split";
-import { MessagesSquare, FileSearch, Boxes, ClipboardCheck, Send } from "lucide-react";
+import {
+  MessagesSquare, FileSearch, Boxes, ClipboardCheck, Send, Layers, Settings, CloudUpload,
+  ChartNoAxesColumn, ShieldCheck, Users, FileCog, ArrowRightLeft, MonitorCog, ChartColumnBig,
+  MessageSquareText, ImagePlus, CalendarArrowUp, SlidersHorizontal, Search, Paintbrush, CodeXml,
+  Lightbulb, FileCode, Rocket, ChartNoAxesCombined, Gauge, Target, Wrench, Megaphone, TrendingUp,
+  type LucideIcon,
+} from "lucide-react";
 
 // One icon per process step, in order (every service has five steps)
-const PROCESS_ICONS = [MessagesSquare, FileSearch, Boxes, ClipboardCheck, Send];
+const PROCESS_ICONS: LucideIcon[] = [MessagesSquare, FileSearch, Boxes, ClipboardCheck, Send];
+// Services whose steps have their own icons
+const PROCESS_ICONS_BY_SERVICE: Record<string, LucideIcon[]> = {
+  "poc-to-scale": [MessagesSquare, FileSearch, Layers, Settings, CloudUpload],
+  "scaling-up": [FileSearch, ChartNoAxesColumn, ShieldCheck, Layers, Users],
+  "managed-support": [MessagesSquare, FileCog, ArrowRightLeft, MonitorCog, ChartColumnBig],
+  "digital-presence": [FileSearch, MessageSquareText, ImagePlus, CalendarArrowUp, SlidersHorizontal],
+  "application-development": [Search, Paintbrush, CodeXml, ClipboardCheck, Send],
+  "startup-launch": [Lightbulb, FileSearch, FileCode, Rocket, ChartNoAxesCombined],
+  "marketing-growth": [Gauge, Target, Wrench, Megaphone, TrendingUp],
+};
+// Services that show their name above the process heading
+const PROCESS_KICKER = new Set(["marketing-growth"]);
+// Services whose staircase uses a solid glowing line instead of a dashed one
+const SOLID_RAIL = new Set(["managed-support", "digital-presence"]);
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.id }));
@@ -106,6 +126,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         <div className="wrap sec proc">
           <div className="proc-copy">
             <div className="sec-head">
+              {PROCESS_KICKER.has(service.id) && <p className="m proc-kicker-dark">{service.title}</p>}
               <h2 className="h-section-sm">Five steps, each with something you can review.</h2>
             </div>
             <ol className="proc-list" data-stagger>
@@ -121,11 +142,12 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             </ol>
           </div>
           <div className="proc-visual" aria-hidden="true">
-            <svg className="proc-rail" viewBox="0 0 100 85" preserveAspectRatio="none">
+            <svg className={`proc-rail${SOLID_RAIL.has(service.id) ? " solid" : ""}`} viewBox="0 0 100 85" preserveAspectRatio="none">
               <line x1="15" y1="74" x2="89" y2="23" />
             </svg>
             {service.process.map((step, i) => {
-              const StepIcon = PROCESS_ICONS[i % PROCESS_ICONS.length];
+              const icons = PROCESS_ICONS_BY_SERVICE[service.id] ?? PROCESS_ICONS;
+              const StepIcon = icons[i % icons.length];
               return (
                 <div className="proc-node" key={step.title} style={{ "--i": i } as React.CSSProperties}>
                   <div className="proc-label">

@@ -34,7 +34,6 @@ export default function Services({ limit, heading = true }: { limit?: number; he
             <div className="svc-group-head" data-reveal>
               <h3>{GROUPS.build.label}</h3>
               <span className="pill blue">{GROUPS.build.kicker}</span>
-              <p>{GROUPS.build.blurb}</p>
             </div>
             <div className="svc-grid" data-stagger>
               {build.map((s) => <Card key={s.id} s={s} />)}
@@ -44,7 +43,6 @@ export default function Services({ limit, heading = true }: { limit?: number; he
             <div className="svc-group-head" data-reveal>
               <h3>{GROUPS.grow.label}</h3>
               <span className="pill orange">{GROUPS.grow.kicker}</span>
-              <p>{GROUPS.grow.blurb}</p>
             </div>
             <div className="svc-grid" data-stagger>
               {grow.map((s) => <Card key={s.id} s={s} />)}

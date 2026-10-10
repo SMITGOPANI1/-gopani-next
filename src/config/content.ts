@@ -36,11 +36,11 @@ export const PROBLEMS = [
 export const PROCESS_NAME = "The Build → Grow Method";
 
 export const PROCESS = [
-  { n: "01", title: "Discover", text: "A free, no-pressure call where we learn your business, your customers and what success actually looks like for you — not a sales pitch.", when: "Day 1" },
-  { n: "02", title: "Strategy", text: "You get a clear written plan: what we'll build, how we'll market it, a realistic timeline and one fixed price. No vague scopes, no surprise invoices later.", when: "Day 3" },
-  { n: "03", title: "Design & Build", text: "Our designers and developers work side by side, not in handoff silos. You see real, working progress every single week — never a surprise reveal at the end.", when: "Week 1–6" },
-  { n: "04", title: "Launch", text: "Your website or app goes live fully tested on real devices, with analytics, tracking and search tools switched on from day one, not added as an afterthought.", when: "Launch day" },
-  { n: "05", title: "Grow", text: "The same team that built it now grows it — SEO, ads and content, reported in plain language every month, so the numbers keep moving after launch day.", when: "Every month" },
+  { n: "01", title: "Discover", text: "We learn your business, your customers and what success looks like for you.", when: "Day 1" },
+  { n: "02", title: "Strategy", text: "You get a clear plan with scope, timeline and a fixed price.", when: "Day 3" },
+  { n: "03", title: "Design & Build", text: "Our team designs and develops your website or app, with full visibility of progress.", when: "Week 1–6" },
+  { n: "04", title: "Launch", text: "We test everything on real devices and set it live with analytics and tracking.", when: "Launch day" },
+  { n: "05", title: "Grow", text: "The same team continues to help you grow with SEO, ads and content, so the results keep moving after launch.", when: "Every month" },
 ];
 
 export const WHY = [
