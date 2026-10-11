@@ -7,7 +7,7 @@ import { ChevronDown } from "lucide-react";
 import Logo from "./Logo";
 import { BUILD, GROW, GROUPS } from "@/config/services";
 import { ServiceLink } from "./ServiceModal";
-import { Ico, ArrowRight } from "./icons";
+import { CallArrow } from "./icons";
 
 const LINKS = [
   { href: "/#process", label: "How we work", id: "process" },
@@ -53,6 +53,7 @@ function useActiveNav() {
 
 export default function Header() {
   const active = useActiveNav();
+  const pathname = usePathname();
   const navRef = useRef<HTMLUListElement>(null);
   type PillBox = { left: number; width: number; top: number; height: number };
   const [pill, setPill] = useState<{ box: PillBox | null; shown: boolean; jump: boolean }>({ box: null, shown: false, jump: false });
@@ -144,8 +145,7 @@ export default function Header() {
                   <div className="mega-col">
                     <span className="m m-blue">{GROUPS.build.label} · {GROUPS.build.kicker}</span>
                     {BUILD.map((s) => (
-                      <ServiceLink key={s.id} id={s.id} className="mega-item" role="menuitem" onPick={closeAll}>
-                        <i><Ico name={s.icon} size={18} /></i>
+                      <ServiceLink key={s.id} id={s.id} className="mega-item" aria-current={pathname === `/services/${s.id}` ? "page" : undefined} role="menuitem" onPick={closeAll}>
                         <span>{s.title}</span>
                       </ServiceLink>
                     ))}
@@ -153,15 +153,14 @@ export default function Header() {
                   <div className="mega-col">
                     <span className="m m-orange">{GROUPS.grow.label} · {GROUPS.grow.kicker}</span>
                     {GROW.map((s) => (
-                      <ServiceLink key={s.id} id={s.id} className="mega-item" role="menuitem" onPick={closeAll}>
-                        <i><Ico name={s.icon} size={18} /></i>
+                      <ServiceLink key={s.id} id={s.id} className="mega-item" aria-current={pathname === `/services/${s.id}` ? "page" : undefined} role="menuitem" onPick={closeAll}>
                         <span>{s.title}</span>
                       </ServiceLink>
                     ))}
                   </div>
                   <div className="mega-foot">
-                    <span>Not sure what you need? We&apos;ll tell you on a free call.</span>
-                    <Link href="/#contact" className="link-arrow" onClick={closeAll}>Book a Free Call <ArrowRight size={16} /></Link>
+                    <span>Not sure what you need? Message us and we&apos;ll point you the right way.</span>
+                    <Link href="/#contact" className="link-arrow" onClick={closeAll}>Start Your Project <CallArrow /></Link>
                   </div>
                 </div>
               </li>
@@ -172,7 +171,7 @@ export default function Header() {
           </nav>
 
           <div className="hdr-cta">
-            <Link href="/#contact" className="btn btn-ink btn-sm">Book a Free Call <ArrowRight size={16} /></Link>
+            <Link href="/#contact" className="btn btn-ink btn-sm">Start Your Project <CallArrow /></Link>
             <button
               className="burger"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -192,15 +191,15 @@ export default function Header() {
           <summary>Services</summary>
           <div className="mnav-sub">
             <span className="m m-blue">{GROUPS.build.label} · {GROUPS.build.kicker}</span>
-            {BUILD.map((s) => <ServiceLink key={s.id} id={s.id} onPick={closeAll}>{s.title}</ServiceLink>)}
+            {BUILD.map((s) => <ServiceLink key={s.id} id={s.id} aria-current={pathname === `/services/${s.id}` ? "page" : undefined} onPick={closeAll}>{s.title}</ServiceLink>)}
             <span className="m m-orange">{GROUPS.grow.label} · {GROUPS.grow.kicker}</span>
-            {GROW.map((s) => <ServiceLink key={s.id} id={s.id} onPick={closeAll}>{s.title}</ServiceLink>)}
+            {GROW.map((s) => <ServiceLink key={s.id} id={s.id} aria-current={pathname === `/services/${s.id}` ? "page" : undefined} onPick={closeAll}>{s.title}</ServiceLink>)}
           </div>
         </details>
         {LINKS.map((l) => (
           <Link key={l.href} href={l.href} onClick={closeAll}>{l.label}</Link>
         ))}
-        <Link href="/#contact" className="btn btn-blue" onClick={closeAll}>Book a Free Call <ArrowRight size={16} /></Link>
+        <Link href="/#contact" className="btn btn-blue" onClick={closeAll}>Start Your Project <CallArrow /></Link>
       </nav>
     </>
   );

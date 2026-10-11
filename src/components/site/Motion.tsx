@@ -53,6 +53,14 @@ export default function Motion() {
     }
     root.setAttribute("data-js", "");
 
+    // Whatever sits in a section already on screen plays its entrance right away, so the section
+    // you land on is complete; only content further down waits for its scroll trigger.
+    const onLoad = (el: Element) => {
+      const r = (el.closest("section") ?? el).getBoundingClientRect();
+      return r.top < window.innerHeight && r.bottom > 0;
+    };
+    const trigger = (el: Element, start: string) => (onLoad(el) ? undefined : { trigger: el, start, once: true });
+
     const ctx = gsap.context(() => {
       try {
         gsap.utils.toArray<HTMLElement>("[data-split]").forEach((h) => {
@@ -61,7 +69,7 @@ export default function Motion() {
           gsap.fromTo(
             words,
             { yPercent: 110, opacity: 0 },
-            { yPercent: 0, opacity: 1, duration: 0.9, ease: "power4.out", stagger: 0.04, scrollTrigger: { trigger: h, start: "top 90%", once: true } },
+            { yPercent: 0, opacity: 1, duration: 0.9, ease: "power4.out", stagger: 0.04, scrollTrigger: trigger(h, "top 90%") },
           );
         });
 
@@ -70,7 +78,7 @@ export default function Motion() {
           gsap.fromTo(
             el,
             { y: 40, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, delay, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 90%", once: true } },
+            { y: 0, opacity: 1, duration: 1, delay, ease: "power3.out", scrollTrigger: trigger(el, "top 90%") },
           );
         });
 
@@ -81,7 +89,7 @@ export default function Motion() {
             kids,
             { y: 36, opacity: 0 },
             // clearProps: drop GSAP's inline transform afterwards so CSS :hover transforms still work
-            { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", stagger: 0.08, clearProps: "transform", scrollTrigger: { trigger: group, start: "top 88%", once: true } },
+            { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", stagger: 0.08, clearProps: "transform", scrollTrigger: trigger(group, "top 88%") },
           );
         });
 
@@ -94,7 +102,7 @@ export default function Motion() {
             v: target,
             duration: 2,
             ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 88%", once: true },
+            scrollTrigger: trigger(el, "top 88%"),
             onUpdate: () => {
               el.textContent = prefix + Math.round(n.v).toLocaleString("en-IN") + suffix;
             },

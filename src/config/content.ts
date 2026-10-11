@@ -101,9 +101,10 @@ export const VIDEO_TESTIMONIAL = {
 };
 
 export const STACK = [
-  { group: "Website & app", items: ["React", "Next.js", "Node.js", "Flutter", "WordPress", "Shopify", "Python", "Laravel"] },
-  { group: "Cloud", items: ["AWS", "Google Cloud", "Vercel", "Docker"] },
+  { group: "Website & app", items: ["React", "Next.js", "Node.js", "Flutter", "WordPress", "Python", "Laravel"] },
+  { group: "Cloud", items: ["AWS", "Google Cloud", "Docker"] },
   { group: "Marketing", items: ["Google Ads", "Meta Ads", "Google Analytics 4", "Search Console", "HubSpot", "SEMrush", "WhatsApp API"] },
+  { group: "AI", items: ["Chatbots & assistants", "AI agents", "Voice agents", "Workflow automation", "Lead qualification"] },
 ];
 
 export const BADGES = [

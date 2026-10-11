@@ -9,7 +9,7 @@ export default function Floating() {
 
       <div className="mobile-cta" id="mobileCta">
         <a href={telHref} className="btn btn-ghost"><Phone size={16} /> Call</a>
-        <Link href="/#contact" className="btn btn-blue">Book a Free Call</Link>
+        <Link href="/#contact" className="btn btn-blue">Start Your Project</Link>
       </div>
     </>
   );

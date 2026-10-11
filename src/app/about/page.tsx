@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CONFIG } from "@/config/site";
 import { Handshake, UserRound, ChartColumn, KeyRound } from "lucide-react";
-import { ArrowRight } from "@/components/site/icons";
+import { CallArrow } from "@/components/site/icons";
 
 export const metadata: Metadata = {
   title: "About Us | KarmaHubAI",
@@ -75,9 +75,9 @@ export default function AboutPage() {
                 Want to see if we&apos;re a fit?
               </h2>
               <p className="lead" style={{ color: "var(--on-dark)", maxWidth: 560, margin: "0 auto 24px" }}>
-                No pitch and no pressure, just a free call to talk through what you actually need.
+                No pitch and no pressure, just send us a message about what you actually need.
               </p>
-              <Link href="/#contact" className="btn btn-blue">Book a Free Call <ArrowRight size={18} /></Link>
+              <Link href="/#contact" className="btn btn-blue">Start Your Project <CallArrow /></Link>
             </div>
           </div>
         </div>

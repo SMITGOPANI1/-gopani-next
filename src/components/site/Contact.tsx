@@ -6,7 +6,7 @@ import { CONFIG, mailHref } from "@/config/site";
 import { SERVICES, SERVICE_BY_ID } from "@/config/services";
 import { emailOk, sendForm } from "@/lib/forms";
 import { SplitHeading } from "./Split";
-import { ArrowRight } from "./icons";
+import { CallArrow } from "./icons";
 import { Mail, Clock, Lock } from "lucide-react";
 
 type Errors = Partial<Record<"name" | "email", string>>;
@@ -21,11 +21,11 @@ const STAGES = [
 
 const NEXT_STEPS = [
   { title: "Send the form", text: "Tell us where you are and what you need." },
-  { title: "Free 30-minute call", text: "We listen, ask questions and share honest options." },
+  { title: "We reply by email", text: "We read it, ask any questions and share honest options." },
   { title: "Clear written plan", text: "Scope, timeline and a fixed price, yours to keep." },
 ];
 
-/** "Get in touch" section. Every "Book a Free Call" button links here (/#contact). */
+/** "Get in touch" section. Every "Start Your Project" button links here (/#contact). */
 export default function Contact() {
   const router = useRouter();
   const [service, setService] = useState(SERVICES[0].title);
@@ -39,6 +39,20 @@ export default function Contact() {
   useEffect(() => {
     const preselected = SERVICE_BY_ID[new URLSearchParams(window.location.search).get("service") ?? ""]?.title;
     if (preselected) setService(preselected); // eslint-disable-line react-hooks/set-state-in-effect -- sync from the ?service= link
+  }, []);
+
+  // The open dropdown list is drawn above everything, header included. As the page scrolls, clip
+  // off whatever part of it has moved up behind the sticky header, so it slides under like the text.
+  useEffect(() => {
+    const clip = () => {
+      const hdr = document.getElementById("site-header")?.getBoundingClientRect().bottom ?? 0;
+      document.querySelectorAll<HTMLSelectElement>(".form select").forEach((sel) => {
+        const top = sel.getBoundingClientRect().bottom + 6; // list sits 6px below the field (margin-top)
+        sel.style.setProperty("--picker-clip", `${Math.max(0, hdr - top)}px`);
+      });
+    };
+    window.addEventListener("scroll", clip, { passive: true });
+    return () => window.removeEventListener("scroll", clip);
   }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -80,7 +94,7 @@ export default function Contact() {
         <div className="contact-copy">
           <SplitHeading className="h-section" text="Tell us where you are. We'll map the path from there." />
           <p className="lead" data-reveal>
-            A free consultation is a conversation about your goals, not a sales pitch. You&apos;ll leave with a clear
+            Tell us about your goals by message. No sales pitch. You&apos;ll leave with a clear
             view of options, a rough scope and a recommended first step.
           </p>
 
@@ -97,7 +111,7 @@ export default function Contact() {
           </ol>
 
           <div className="contact-info" data-reveal>
-            <a href={mailHref} className="contact-item">
+            <a href={`https://mail.google.com/mail/?extsrc=mailto&url=${encodeURIComponent(mailHref)}`} target="_blank" rel="noopener noreferrer" className="contact-item">
               <i><Mail size={18} /></i>
               <div><small>Email us</small>{CONFIG.email}</div>
             </a>
@@ -112,7 +126,7 @@ export default function Contact() {
 
         <form className="form" onSubmit={onSubmit} noValidate data-reveal data-delay="0.1">
           <div className="form-head">
-            <h3>Book your free consultation</h3>
+            <h3>Send us a message</h3>
             <p>Takes under a minute. We reply within one business day.</p>
           </div>
           <div className="form-row">
@@ -134,14 +148,14 @@ export default function Contact() {
             </div>
             <div>
               <label className="lbl" htmlFor="cStage">Where are you today?</label>
-              <select className="fld" id="cStage" name="stage" defaultValue={STAGES[1]}>
+              <select data-lenis-prevent className="fld" id="cStage" name="stage" defaultValue={STAGES[1]}>
                 {STAGES.map((s) => <option key={s}>{s}</option>)}
               </select>
             </div>
           </div>
           <div>
             <label className="lbl" htmlFor="cService">What do you need help with?</label>
-            <select className="fld" id="cService" name="service" value={service} onChange={(e) => setService(e.target.value)}>
+            <select data-lenis-prevent className="fld" id="cService" name="service" value={service} onChange={(e) => setService(e.target.value)}>
               {SERVICES.map((s) => <option key={s.id}>{s.title}</option>)}
               <option>Not sure yet</option>
             </select>
@@ -152,7 +166,7 @@ export default function Contact() {
           </div>
           {failed && <p className="form-msg" role="alert">We couldn&apos;t send that. Please try again or email us at {CONFIG.email}.</p>}
           <button type="submit" className="btn btn-blue form-submit" disabled={sending}>
-            {sending ? "Sending…" : "Book a Free Call"} <ArrowRight size={18} />
+            {sending ? "Sending…" : "Start Your Project"} <CallArrow />
           </button>
           <p className="form-note"><Lock size={14} /> Your details stay private. No spam, ever.</p>
         </form>

@@ -21,7 +21,7 @@ export default function ProblemSolution() {
               <div className="ps-fix">
                 <span className="m"><Check size={14} /> Our fix</span>
                 <p>{p.fix}</p>
-                <ServiceLink id={p.service} className="link-arrow soft">See how <ArrowRight size={16} /></ServiceLink>
+                <ServiceLink id={p.service} className="link-arrow soft see-how">See how <ArrowRight size={16} className="arrow-still" /></ServiceLink>
               </div>
             </article>
           ))}

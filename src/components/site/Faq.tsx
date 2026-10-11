@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FAQS } from "@/config/content";
 import { SplitHeading } from "./Split";
-import { ArrowRight } from "./icons";
+import { CallArrow } from "./icons";
 
 type Props = {
   title?: string;
@@ -21,13 +21,13 @@ export default function Faq({
           <p className="lead" data-reveal>{lead}</p>
           <div className="faq-cta" data-reveal>
             <b>Still have a question?</b>
-            <span>Ask us on a free call. No pitch, just answers.</span>
-            <Link href="/#contact" className="link-arrow">Book a Free Call <ArrowRight size={16} /></Link>
+            <span>Send us a message. No pitch, just answers.</span>
+            <Link href="/#contact" className="link-arrow">Start Your Project <CallArrow /></Link>
           </div>
         </div>
         <div className="split-r" data-stagger>
-          {items.map((f, i) => (
-            <details className="faq" key={f.q} open={i === 0}>
+          {items.map((f) => (
+            <details className="faq" key={f.q}>
               <summary>{f.q}</summary>
               <p>{f.a}</p>
             </details>

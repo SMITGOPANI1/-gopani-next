@@ -1,14 +1,16 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
+import { Code2, Layers, TrendingUp } from "lucide-react";
+import { LogoMark } from "./Logo";
 
-// Brand icons (cut from the brand artwork) shown on small cards with a text label.
+// Service icons in the logo orange, shown on small cards with a text label.
 const NODES = [
-  { label: "Software", src: "/icon-software.png", pos: "top",
+  { label: "Software", Icon: Code2, pos: "top",
     items: ["IT Strategy & Consulting", "Application Development", "Start-up Launch"] },
-  { label: "Infrastructure", src: "/icon-infrastructure.png", pos: "br",
+  { label: "Infrastructure", Icon: Layers, pos: "br",
     items: ["POC to Scalable Infrastructure", "Scaling Up", "Managed Support & Outsourcing"] },
-  { label: "Growth", src: "/icon-growth.png", pos: "bl",
+  { label: "Growth", Icon: TrendingUp, pos: "bl",
     items: ["Digital Content & Presence", "Marketing & Growth"] },
 ] as const;
 
@@ -28,31 +30,12 @@ const half = (w: number, h: number, c: number, s: number) => (Math.abs(c) * w) /
 /** Hero visual: logo core with orbiting service cards. Hover a card to fan out what it covers. */
 export default function HeroOrbit() {
   const wrap = useRef<HTMLDivElement>(null);
-  const orbit = useRef<HTMLDivElement>(null);
   const core = useRef<HTMLDivElement>(null);
   const pop = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [hot, setHot] = useState<number | null>(null);
   const [pills, setPills] = useState<Pill[] | null>(null);
   const [links, setLinks] = useState<Link[]>([]);
-  const MAX = 8; // degrees of tilt at the edge
-
-  // The side under the cursor sinks in, the opposite side lifts out (off while a card is open).
-  const tilt = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = orbit.current;
-    if (!el || hot !== null || e.pointerType !== "mouse") return;
-    const r = e.currentTarget.getBoundingClientRect();
-    const dx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-    const dy = ((e.clientY - r.top) / r.height - 0.5) * 2;
-    el.style.transition = "transform 0.15s ease-out";
-    el.style.transform = `rotateX(${(-dy * MAX).toFixed(2)}deg) rotateY(${(dx * MAX).toFixed(2)}deg)`;
-  };
-  const reset = () => {
-    const el = orbit.current;
-    if (!el || hot !== null) return;
-    el.style.transition = "transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1)";
-    el.style.transform = "";
-  };
 
   const keep = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -171,7 +154,7 @@ export default function HeroOrbit() {
   }, [hot, pills]);
 
   return (
-    <div className="orbit-wrap" ref={wrap} onPointerMove={tilt} onPointerLeave={reset} aria-hidden="true">
+    <div className="orbit-wrap" ref={wrap} aria-hidden="true">
       <svg className="orbit-links">
         {links.map((l, n) => (
           <g key={n}>
@@ -179,21 +162,20 @@ export default function HeroOrbit() {
           </g>
         ))}
       </svg>
-      <div className={`orbit${hot !== null ? " has-hot" : ""}`} ref={orbit}>
+      <div className={`orbit${hot !== null ? " has-hot" : ""}`}>
         <span className="orbit-ring r1" />
         <span className="orbit-ring r2" />
         <span className="orbit-ring r3" />
         <span className="orbit-glow" />
         <div className="orbit-core" ref={core}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-mark.png" alt="" width={96} height={96} />
+          <LogoMark size={96} />
           <b>KarmaHub<i>AI</i></b>
         </div>
         <div className="orbit-spin">
           {NODES.map(({ label, pos }) => (
             <span key={label} className={`orbit-line ${pos}`} />
           ))}
-          {NODES.map(({ label, src, pos }, i) => (
+          {NODES.map(({ label, Icon, pos }, i) => (
             <div
               key={label}
               className={`orbit-pos ${pos}${hot === i ? " is-hot" : ""}`}
@@ -201,8 +183,7 @@ export default function HeroOrbit() {
               onPointerLeave={leave}
             >
               <div className="orbit-node">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" height={40} />
+                <Icon size={34} strokeWidth={2} aria-hidden="true" />
                 <span>{label}</span>
               </div>
             </div>

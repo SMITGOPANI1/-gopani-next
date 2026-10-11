@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   description,
   openGraph: { title, description, type: "website", siteName: CONFIG.name },
   icons: {
-    icon: "/images/logo.png",
+    icon: "/images/logo-mark.svg",
     apple: "/images/logo.png",
   },
 };

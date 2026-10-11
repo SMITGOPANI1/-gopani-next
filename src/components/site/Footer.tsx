@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="wrap ftr-in">
         <div className="ftr-top">
           <div className="ftr-brand">
-            <Logo dark />
+            <Logo />
             <p>We build and grow digital businesses. One team designs and builds your website, app or software, then markets it every month after, so you never have to manage two vendors, or two invoices, for one result.</p>
             <div className="socials">
               {SOCIALS.map((s) => CONFIG.socials[s.key] && (

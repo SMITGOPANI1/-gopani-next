@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SplitHeading } from "./Split";
 import HeroOrbit from "./HeroOrbit";
-import { ArrowRight, ArrowUpRight } from "./icons";
+import { ArrowUpRight, CallArrow } from "./icons";
 
 export default function Hero() {
   return (
@@ -15,8 +15,8 @@ export default function Hero() {
             built properly, then gets found, ranked and turned into inquiries every single month after that.
           </p>
           <div className="hero-actions" data-reveal data-delay="0.35">
-            <Link href="/#contact" className="btn btn-blue">Book a Free Call <ArrowRight size={18} /></Link>
-            <Link href="/services" className="btn btn-ghost">Our Services <ArrowUpRight size={18} /></Link>
+            <Link href="/#contact" className="btn btn-blue">Start Your Project <CallArrow /></Link>
+            <Link href="/services" className="btn btn-ghost">Our Services <ArrowUpRight size={18} className="arrow-still" /></Link>
           </div>
         </div>
 

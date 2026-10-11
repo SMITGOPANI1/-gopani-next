@@ -2,26 +2,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { PROCESS } from "@/config/content";
 import { SplitHeading } from "./Split";
-import { ArrowRight } from "./icons";
+import { CallArrow } from "./icons";
 
 // Outline of each step's tile and icon in the illustration (1536×1024), as % of the image
-const TILE_CLIPS = [
-  [[140, 790], [205, 760], [205, 712], [350, 712], [350, 770], [405, 800], [405, 860], [275, 948], [140, 880]],
-  [[403, 700], [475, 660], [475, 582], [610, 582], [610, 668], [668, 700], [668, 770], [540, 838], [403, 770]],
-  [[667, 580], [735, 545], [735, 442], [885, 442], [885, 545], [930, 575], [930, 640], [800, 702], [667, 640]],
-  [[915, 440], [995, 400], [995, 305], [1110, 305], [1110, 395], [1178, 430], [1178, 500], [1050, 562], [915, 500]],
-  [[1185, 280], [1250, 230], [1250, 172], [1370, 172], [1370, 215], [1432, 250], [1432, 320], [1300, 398], [1185, 330]],
-].map((pts) => `polygon(${pts.map(([x, y]) => `${((x / 1536) * 100).toFixed(2)}% ${((y / 1024) * 100).toFixed(2)}%`).join(", ")})`);
-
-// Each step's icon, cut out of the illustration (process-icon-N.png) so it can lift on hover.
-// Position and width as % of the base image, which has the icons painted out.
-const ICONS = [
-  { left: 12.7, top: 68.36, width: 10.74 },
-  { left: 30.6, top: 57.42, width: 9.77 },
-  { left: 47.2, top: 43.46, width: 11.39 },
-  { left: 63.48, top: 30.27, width: 9.77 },
-  { left: 80.4, top: 15.62, width: 9.77 },
+const TILE_PTS = [
+  [[136, 790], [205, 760], [205, 712], [350, 712], [350, 770], [409, 800], [409, 884], [275, 972], [136, 904]],
+  [[399, 700], [475, 660], [475, 582], [610, 582], [610, 668], [672, 700], [672, 794], [540, 862], [399, 794]],
+  [[663, 580], [735, 545], [735, 442], [885, 442], [885, 545], [934, 575], [934, 664], [800, 726], [663, 664]],
+  [[911, 440], [995, 400], [995, 305], [1110, 305], [1110, 395], [1182, 430], [1182, 524], [1050, 586], [911, 524]],
+  [[1181, 280], [1250, 230], [1250, 172], [1370, 172], [1370, 215], [1436, 250], [1436, 344], [1300, 422], [1181, 354]],
 ];
+const TILE_CLIPS = TILE_PTS.map((pts) => `polygon(${pts.map(([x, y]) => `${((x / 1536) * 100).toFixed(2)}% ${((y / 1024) * 100).toFixed(2)}%`).join(", ")})`);
+// Centre of each block: the hovered block scales up around it, so it covers its own original spot.
+const ORIGINS = TILE_PTS.map((p) => `${(((p[0][0] + p[5][0]) / 2 / 1536) * 100).toFixed(2)}% ${(((p[2][1] + p[7][1]) / 2 / 1024) * 100).toFixed(2)}%`);
+
 
 /** Section 04: how we work, the five steps as a vertical timeline beside the step illustration. */
 export default function Process() {
@@ -47,17 +41,17 @@ export default function Process() {
           </ol>
 
           <div className="tl-cta" data-reveal>
-            <Link href="/#contact" className="btn btn-blue">Book a Free Call <ArrowRight size={18} /></Link>
-            <span style={{ color: "var(--muted)", fontSize: 15 }}>Your project can start within 10 days of the first call.</span>
+            <Link href="/#contact" className="btn btn-blue">Start Your Project <CallArrow /></Link>
+            <span style={{ color: "var(--muted)", fontSize: 15 }}>Your project can start within 10 days of your first message.</span>
           </div>
         </div>
 
-        {/* Step illustration: the base has the icons painted out; each icon is its own image so it
-            lifts on hover. The clipped tiles are just hover hit-areas, linked both ways with the list. */}
+        {/* Step illustration. Each block (tile + icon) is a clipped copy of the same picture laid
+            exactly over itself; on hover it lifts as one piece. Linked both ways with the list. */}
         <div className="pv" data-reveal data-delay="0.15">
           <div className="pv-in">
             <Image
-              src="/images/process-base.webp"
+              src="/images/process-full.webp"
               alt="Our five steps: Discover, Strategy, Design & Build, Launch, Grow"
               width={1536}
               height={1024}
@@ -65,11 +59,7 @@ export default function Process() {
               unoptimized
             />
             {PROCESS.map((p, i) => (
-              /* eslint-disable-next-line @next/next/no-img-element -- cut-out layered over the base image */
-              <img className="pv-icon" data-n={i + 1} key={p.n} src={`/images/process-icon-${i + 1}.png`} alt="" style={{ left: `${ICONS[i].left}%`, top: `${ICONS[i].top}%`, width: `${ICONS[i].width}%` }} />
-            ))}
-            {PROCESS.map((p, i) => (
-              <div className="pv-step" data-n={i + 1} key={p.n} aria-hidden="true">
+              <div className="pv-step" data-n={i + 1} key={p.n} aria-hidden="true" style={{ transformOrigin: ORIGINS[i] }}>
                 <div className="pv-tile" style={{ clipPath: TILE_CLIPS[i] }} />
               </div>
             ))}

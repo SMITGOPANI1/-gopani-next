@@ -49,7 +49,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
   if (!service) notFound();
 
   return (
-    <>
+    <div className="svc-page">
       <section className="bg-2">
         <div className="wrap sec">
           <div className="svc-hero-grid">
@@ -196,6 +196,6 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -3,8 +3,11 @@ import {
   Globe, Smartphone, Cog, PenTool, Cloud, Bot, LifeBuoy, Search, Target, Megaphone, PenLine, Gem, MessageSquare,
   Handshake, UserRound, ChartColumn, KeyRound, Hospital, ShoppingCart, House, GraduationCap, Laptop, Factory,
   ShoppingBag, Hotel, Coins, Sparkles, Compass, Rocket, Server, TrendingUp, Code2, Image,
-  Star, ArrowRight, ArrowUpRight, Check, X, Minus, Play, Phone, Mail, MapPin, Clock,
+  Star, ArrowRight, ArrowUpRight, Check, X, Minus, Play, Phone, Mail, MapPin, Clock, MoveRight,
 } from "lucide-react";
+
+/** Arrow on every "Start Your Project" button: long arrow, a bit larger, stays put on hover (see .arrow-still). */
+export const CallArrow = () => <MoveRight size={20} strokeWidth={2.1} className="arrow-still" />;
 
 type Icon = ComponentType<SVGProps<SVGSVGElement> & { size?: number | string; strokeWidth?: number }>;
 

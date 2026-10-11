@@ -10,7 +10,7 @@ function Card({ s }: { s: Service }) {
       <span className="ic"><Ico name={s.icon} size={22} /></span>
       <h4>{s.title}</h4>
       <p>{s.result}</p>
-      <span className="more">Learn more <ArrowRight size={16} /></span>
+      <span className="more">Learn more <ArrowRight size={16} className="arrow-still" /></span>
     </ServiceLink>
   );
 }
