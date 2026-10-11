@@ -16,13 +16,13 @@ export const CLIENTS = [
 
 export const PROBLEMS = [
   {
-    problem: "My website looks old, loads slowly, and hasn't brought in a single enquiry in months.",
-    fix: "We design and build a fast, modern website and brand around one job: turning visitors into enquiries. Every page, button and word is placed on purpose, not decoration.",
+    problem: "My website looks old, loads slowly, and hasn't brought in a single inquiry in months.",
+    fix: "We design and build a fast, modern website and brand around one job: turning visitors into inquiries. Every page, button and word is placed on purpose, not decoration.",
     service: "digital-presence",
   },
   {
     problem: "I spend real money on Google and Meta ads every month, but I can't tell you what it actually sold.",
-    fix: "We set up tracking before we spend a single rupee, so every campaign reports back in leads and sales, not just clicks and impressions.",
+    fix: "We set up tracking before we spend a single dollar, so every campaign reports back in leads and sales, not just clicks and impressions.",
     service: "marketing-growth",
   },
   {
@@ -38,7 +38,7 @@ export const PROCESS_NAME = "The Build → Grow Method";
 export const PROCESS = [
   { n: "01", title: "Discover", text: "We learn your business, your customers and what success looks like for you.", when: "Day 1" },
   { n: "02", title: "Strategy", text: "You get a clear plan with scope, timeline and a fixed price.", when: "Day 3" },
-  { n: "03", title: "Design & Build", text: "Our team designs and develops your website or app, with full visibility of progress.", when: "Week 1–6" },
+  { n: "03", title: "Design & Build", text: "Our team designs and develops your website or app, with full visibility of progress.", when: "Weeks 1 to 6" },
   { n: "04", title: "Launch", text: "We test everything on real devices and set it live with analytics and tracking.", when: "Launch day" },
   { n: "05", title: "Grow", text: "The same team continues to help you grow with SEO, ads and content, so the results keep moving after launch.", when: "Every month" },
 ];
@@ -61,36 +61,36 @@ export const DELIVERY_MODELS = [
   {
     tag: "Model B · Most flexible",
     title: "Monthly Retainer",
-    text: "An ongoing team devoted to your account every month — marketing, content, support or a mix. Scale the scope up or down as your needs change.",
+    text: "An ongoing team devoted to your account every month: marketing, content, support or a mix. Scale the scope up or down as your needs change.",
     bestFor: ["SEO, ads, content and social media", "Managed support and maintenance", "Businesses that want one steady, accountable team"],
     popular: true,
   },
   {
     tag: "Model C",
     title: "Dedicated Pod / Staff Augmentation",
-    text: "A small team, or individual engineers, who work only on your roadmap — directed by you day to day, or by our delivery manager.",
+    text: "A small team, or individual engineers, who work only on your roadmap, directed by you day to day, or by our delivery manager.",
     bestFor: ["Start-ups and products scaling fast", "Long-running products that need steady capacity", "Teams that need extra engineers without a long hiring process"],
     popular: false,
   },
 ];
 
 export const INDUSTRIES = [
-  { icon: "hospital", title: "Healthcare", text: "Clinics, hospitals and labs — booking systems and marketing that patients actually trust." },
-  { icon: "cart", title: "E-commerce", text: "Online stores and D2C brands — built to convert, then grown with SEO and performance ads." },
-  { icon: "home", title: "Real Estate", text: "Builders, brokers and project launches — lead generation that fills site-visit calendars." },
-  { icon: "school", title: "Education", text: "Schools, colleges and ed-tech — admissions platforms and local search that fills seats." },
-  { icon: "laptop", title: "SaaS & Startups", text: "From first MVP to scale-up — product, growth and everything a funding round will ask about." },
-  { icon: "factory", title: "Manufacturing", text: "B2B exporters and factories — credible web presence for buyers who check you out online first." },
-  { icon: "bag", title: "Retail", text: "Shops, chains and franchises — one brand system that works the same in every location." },
-  { icon: "hotel", title: "Hotels & Travel", text: "Hotels, tours and restaurants — direct bookings that don't hand your margin to an OTA." },
-  { icon: "coins", title: "Finance", text: "CA firms, NBFCs and insurance — the trust signals compliance-minded customers look for first." },
+  { icon: "hospital", title: "Healthcare", text: "Clinics, hospitals and labs: booking systems and marketing that patients actually trust." },
+  { icon: "cart", title: "E-commerce", text: "Online stores and direct-to-consumer brands: built to convert, then grown with SEO and performance ads." },
+  { icon: "home", title: "Real Estate", text: "Developers, agents and project launches: lead generation that fills showing calendars." },
+  { icon: "school", title: "Education", text: "Schools, colleges and EdTech: admissions platforms and local search that fills seats." },
+  { icon: "laptop", title: "SaaS & Startups", text: "From first MVP to scale-up: product, growth and everything a funding round will ask about." },
+  { icon: "factory", title: "Manufacturing", text: "B2B exporters and factories: credible web presence for buyers who check you out online first." },
+  { icon: "bag", title: "Retail", text: "Stores, chains and franchises: one brand system that works the same in every location." },
+  { icon: "hotel", title: "Hotels & Travel", text: "Hotels, tours and restaurants: direct bookings that don't hand your margin to a booking site." },
+  { icon: "coins", title: "Finance", text: "Accounting firms, lenders and insurance: the trust signals compliance-minded customers look for first." },
 ];
 
 export const TESTIMONIALS = [
-  { quote: "Our old website gave us zero enquiries for almost a year. KarmahubAI rebuilt it from scratch and ran our Google Ads — we now get 30+ genuine calls every week, and we can see exactly which keyword brought each one in.", name: "Priya Mehta", role: "Director, UrbanNest Realty", initials: "PM" },
-  { quote: "The weekly report is honestly my favourite part of working with them. I always know exactly where my ad budget is going and what it brought back — no more guessing, no more waiting for a monthly call to find out.", name: "Arjun Kapoor", role: "Owner, ShopKart", initials: "AK" },
+  { quote: "Our old website gave us zero inquiries for almost a year. KarmaHubAI rebuilt it from scratch and ran our Google Ads. We now get 30+ genuine calls every week, and we can see exactly which keyword brought each one in.", name: "Priya Mehta", role: "Director, UrbanNest Realty", initials: "PM" },
+  { quote: "The weekly report is honestly my favorite part of working with them. I always know exactly where my ad budget is going and what it brought back, no more guessing, no more waiting for a monthly call to find out.", name: "Arjun Kapoor", role: "Owner, ShopKart", initials: "AK" },
   { quote: "They built our booking app on time and on the budget we agreed in writing, with zero scope creep. One project manager, always reachable on WhatsApp, who actually understood our clinic's workflow. Very easy to work with.", name: "Neha Joshi", role: "COO, EduPrime", initials: "NJ" },
-  { quote: "We tried three agencies before KarmahubAI, and all three optimised for vanity metrics — followers, likes, impressions. KarmahubAI is the first one that tied every rupee we spent back to an actual sale.", name: "Vikram Shah", role: "Founder, FreshMart", initials: "VS" },
+  { quote: "We tried three agencies before KarmaHubAI, and all three optimized for vanity metrics like followers, likes and impressions. KarmaHubAI is the first one that tied every dollar we spent back to an actual sale.", name: "Vikram Shah", role: "Founder, FreshMart", initials: "VS" },
 ];
 
 export const VIDEO_TESTIMONIAL = {
@@ -112,7 +112,7 @@ export const BADGES = [
   { mark: "C", title: "Clutch", text: "Independently reviewed, top-rated agency" },
   { mark: "GF", title: "GoodFirms", text: "Verified and background-checked agency" },
   { mark: "U", title: "MSME / Udyam", text: "Registered micro, small and medium enterprise" },
-  { mark: "LLP", title: "Registered LLP", text: "Incorporated with the Government of India" },
+  { mark: "LLP", title: "Registered LLP", text: "Registered and in good standing" },
 ];
 
 export const POSTS = [
@@ -127,7 +127,7 @@ export const POSTS = [
   {
     tag: "Marketing",
     title: "SEO vs Google Ads: which one should a small business choose?",
-    excerpt: "Neither is \"better\" — they solve different problems on different timelines. Here's how to decide which one your business needs first.",
+    excerpt: "Neither is \"better\". They solve different problems on different timelines. Here's how to decide which one your business needs first.",
     read: "7 min read",
     date: "Sep 2026",
     tone: "orange",
@@ -155,7 +155,7 @@ export const FAQS = [
 /* =========================================================
    Press / media mentions. Shown as a "Featured in" strip next
    to the certifications, but ONLY once this list is non-empty.
-   Add a real mention only after it genuinely happens — never
+   Add a real mention only after it genuinely happens, never
    invent logos. Example once you have one:
    { name: "YourStory", mark: "YS" },
    ========================================================= */

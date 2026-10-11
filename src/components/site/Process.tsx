@@ -23,7 +23,7 @@ const ICONS = [
   { left: 80.4, top: 15.62, width: 9.77 },
 ];
 
-/** Section 04: how we work — the five steps as a vertical timeline beside the step illustration. */
+/** Section 04: how we work, the five steps as a vertical timeline beside the step illustration. */
 export default function Process() {
   return (
     <section id="process" aria-label="How we work" className="bg-2">
@@ -31,7 +31,7 @@ export default function Process() {
         <div className="proc-home-head">
           <SplitHeading className="h-section" text="Five steps. One team, start to finish." />
         </div>
-        <p className="lead proc-home-lead" data-reveal>No handoffs between a &ldquo;build&rdquo; vendor and a &ldquo;grow&rdquo; vendor — the same people who design and build your project are the ones who market it afterwards.</p>
+        <p className="lead proc-home-lead" data-reveal>No handoffs between a &ldquo;build&rdquo; vendor and a &ldquo;grow&rdquo; vendor. The same people who design and build your project are the ones who market it afterward.</p>
 
         <div className="proc-home-body">
           <ol className="vtl" data-stagger>

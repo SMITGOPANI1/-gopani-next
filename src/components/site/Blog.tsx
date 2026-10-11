@@ -2,7 +2,7 @@ import { POSTS } from "@/config/content";
 import { SplitHeading } from "./Split";
 
 /**
- * Section 11: Insights. Informational only for now — no "read article" links,
+ * Section 11: Insights. Informational only for now, no "read article" links,
  * because there are no real article pages behind them yet. Wire these up once
  * real articles exist at /insights/<slug>.
  */

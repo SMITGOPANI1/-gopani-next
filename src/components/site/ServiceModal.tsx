@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 /**
  * Any element that links to a service's own page (/services/<id>).
  * Kept as its own component (instead of plain <Link>) so every call
- * site — header mega-menu, footer, problem cards, service grid —
+ * site, header mega-menu, footer, problem cards, service grid —
  * stays a one-line change if the URL pattern ever changes.
  */
 export function ServiceLink({

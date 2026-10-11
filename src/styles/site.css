@@ -1,5 +1,5 @@
 /* =========================================================
-   KarmahubAI — Site stylesheet
+   KarmaHubAI — Site stylesheet
    Editorial, grid-based design: calm greys, ink navy, one blue, one orange.
    ========================================================= */
 
@@ -965,7 +965,7 @@ textarea.fld { resize: vertical; min-height: 110px; }
 /* ---------- Footer ---------- */
 .ftr { background: var(--ink-2); color: var(--on-dark-3); position: relative; overflow: hidden; }
 .ftr-in { padding-top: 72px; padding-bottom: 40px; display: flex; flex-direction: column; gap: 48px; position: relative; }
-.ftr-top { display: grid; grid-template-columns: minmax(260px, 1.4fr) repeat(4, minmax(140px, 1fr)); gap: 40px 32px; }
+.ftr-top { display: grid; grid-template-columns: minmax(260px, 1.4fr) repeat(3, minmax(140px, 1fr)); gap: 40px 32px; }
 .ftr-brand { display: flex; flex-direction: column; gap: 18px; font-size: 15.5px; max-width: 360px; }
 .news { display: flex; gap: 6px; }
 .news input { flex: 1; min-width: 0; min-height: 46px; padding: 0 14px; border-radius: var(--radius); border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.06); color: #fff; font: inherit; font-size: 15px; }
@@ -1022,3 +1022,51 @@ textarea.fld { resize: vertical; min-height: 110px; }
 .legal p { margin-bottom: 14px; }
 .legal ul { padding-left: 22px; }
 .legal li { margin-bottom: 8px; }
+
+/* ---------- Light warm sections (Contact, service process): same theme, no dark blocks ---------- */
+.bg-warm { background: radial-gradient(ellipse 60% 70% at 85% 10%, rgba(168, 67, 31, 0.08), transparent 70%), var(--bg-2); color: var(--ink); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.bg-warm h2, .bg-warm h3 { color: var(--ink); }
+.bg-warm .lead, .bg-warm .lead-lg { color: var(--text-2); }
+.bg-warm .contact-copy .h-section { color: var(--ink); }
+.bg-warm .contact-copy .lead { color: var(--text-2); }
+.bg-warm .contact-steps li { border-top-color: var(--line-2); }
+.bg-warm .contact-steps li:last-child { border-bottom-color: var(--line-2); }
+.bg-warm .contact-steps .n { border-color: var(--line-2); color: var(--ink); background: #fff; }
+.bg-warm .contact-steps b { color: var(--ink); }
+.bg-warm .contact-steps span { color: var(--text-2); }
+.bg-warm .contact-item { background: #fff; border-color: var(--line); color: var(--ink); }
+.bg-warm a.contact-item:hover { background: var(--blue-tint); border-color: var(--blue-soft); }
+.bg-warm .contact-item i { background: var(--blue-tint); color: var(--blue); }
+.bg-warm .contact-item small { color: var(--muted); }
+.bg-warm .form { box-shadow: 0 30px 80px rgba(34, 28, 21, 0.12); border: 1px solid var(--line); }
+
+.proc-sec.bg-warm { --ember: var(--blue); background: radial-gradient(ellipse 60% 70% at 85% 10%, rgba(168, 67, 31, 0.1), transparent 70%), var(--bg-2); }
+.bg-warm .proc-list li { border-top-color: var(--line-2); }
+.bg-warm .proc-list li:first-child { border-top: 0; }
+.bg-warm .proc-list h3 { color: var(--ink); }
+.bg-warm .proc-list p { color: var(--text-2); }
+.bg-warm .proc-visual::before, .bg-warm .proc-visual::after { border-color: rgba(168, 67, 31, 0.18); }
+.bg-warm .proc-rail line { stroke: var(--blue); }
+.bg-warm .proc-tile {
+  background: linear-gradient(135deg, #ffffff, #f6e4d7);
+  border-color: rgba(168, 67, 31, 0.6);
+  box-shadow: 2px 2px 0 #e9d3c0, 4px 4px 0 #e5ccb7, 6px 6px 0 #e0c5ae, 8px 8px 0 #dbbea6, 10px 10px 0 #d6b79d, 12px 12px 0 #d1b094, 13px 13px 0 1px rgba(168, 67, 31, 0.45), 18px 18px 40px rgba(168, 67, 31, 0.22);
+}
+.bg-warm .proc-node:hover .proc-tile { background: linear-gradient(135deg, #fff, #f2d3bd); border-color: var(--blue); box-shadow: 2px 2px 0 #e9d3c0, 4px 4px 0 #e5ccb7, 6px 6px 0 #e0c5ae, 8px 8px 0 #dbbea6, 10px 10px 0 #d6b79d, 12px 12px 0 #d1b094, 13px 13px 0 1px var(--blue), 18px 18px 50px rgba(168, 67, 31, 0.4); }
+.bg-warm .proc-icon { color: var(--blue); filter: drop-shadow(0 6px 8px rgba(120, 60, 20, 0.25)); }
+.bg-warm .proc-node:hover .proc-icon { color: var(--blue-dark); filter: drop-shadow(0 8px 10px rgba(120, 60, 20, 0.35)); }
+.bg-warm .proc-label span { color: var(--text-2); }
+.bg-warm .proc-node:hover .proc-label b { color: var(--blue-dark); text-shadow: none; }
+.bg-warm .proc-node:hover .proc-label span { color: var(--ink); }
+
+/* ---------- Capitalized UI text: every word starts with a capital (logo, nav, buttons, headings, labels) ---------- */
+.logo, .nav-links a, .nav-btn, .mega a, .mega b, .mega span, .mnav a, .mnav summary,
+.btn, .lbl, .ftr-col a:not([href^="mailto:"]):not([href^="tel:"]):not(.addr), .ftr-legal .links a, .announce a,
+h1, h2, h3, h4, .h-section, .h-section-sm, details.faq summary, .contact-steps b, .proc-list h3, .proc-label b, .svc-card h3 { text-transform: capitalize; }
+
+/* "Our fix" cards: warm medium brown, lighter than the old near-black */
+.ps-fix { background: #8a6246; color: #fff; border-top: 1px solid #a07858; }
+.ps-fix .m { color: #f2d9bf; }
+.ps-fix p { color: #f6ece0; }
+.ps-fix button, .ps-fix .link-arrow, .ps-fix .link-arrow.soft { color: #fff; }
+.ps-fix button:hover, .ps-fix .link-arrow:hover { color: #f2d9bf; }

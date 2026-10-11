@@ -7,7 +7,7 @@ import { SERVICES, SERVICE_BY_ID } from "@/config/services";
 import { emailOk, sendForm } from "@/lib/forms";
 import { SplitHeading } from "./Split";
 import { ArrowRight } from "./icons";
-import { Mail, MapPin, Clock, Lock } from "lucide-react";
+import { Mail, Clock, Lock } from "lucide-react";
 
 type Errors = Partial<Record<"name" | "email", string>>;
 
@@ -22,7 +22,7 @@ const STAGES = [
 const NEXT_STEPS = [
   { title: "Send the form", text: "Tell us where you are and what you need." },
   { title: "Free 30-minute call", text: "We listen, ask questions and share honest options." },
-  { title: "Clear written plan", text: "Scope, timeline and a fixed price — yours to keep." },
+  { title: "Clear written plan", text: "Scope, timeline and a fixed price, yours to keep." },
 ];
 
 /** "Get in touch" section. Every "Book a Free Call" button links here (/#contact). */
@@ -66,7 +66,7 @@ export default function Contact() {
     if (!CONFIG.formEndpoint) {
       // No form service set up yet: open the visitor's email app with the details filled in.
       const body = `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nWhere we are: ${data.stage}\nNeed help with: ${data.service}\n\n${data.message}`;
-      window.open(`${mailHref}?subject=${encodeURIComponent(`New enquiry from ${data.name}`)}&body=${encodeURIComponent(body)}`, "_blank", "noopener");
+      window.open(`${mailHref}?subject=${encodeURIComponent(`New inquiry from ${data.name}`)}&body=${encodeURIComponent(body)}`, "_blank", "noopener");
     }
     try { sessionStorage.setItem("karmahubai-name", data.name.split(" ")[0]); } catch {}
     router.push("/thank-you");
@@ -75,7 +75,7 @@ export default function Contact() {
   const clear = (k: keyof Errors) => () => setErrors((e) => (e[k] ? { ...e, [k]: undefined } : e));
 
   return (
-    <section id="contact" className="bg-ink">
+    <section id="contact" className="bg-warm">
       <div className="wrap sec contact-grid">
         <div className="contact-copy">
           <SplitHeading className="h-section" text="Tell us where you are. We'll map the path from there." />
@@ -101,12 +101,6 @@ export default function Contact() {
               <i><Mail size={18} /></i>
               <div><small>Email us</small>{CONFIG.email}</div>
             </a>
-            {CONFIG.address && (
-              <div className="contact-item">
-                <i><MapPin size={18} /></i>
-                <div><small>Office</small>{CONFIG.address}</div>
-              </div>
-            )}
             {CONFIG.hours && (
               <div className="contact-item">
                 <i><Clock size={18} /></i>
@@ -154,7 +148,7 @@ export default function Contact() {
           </div>
           <div>
             <label className="lbl" htmlFor="cMsg">Tell us a little more <span className="opt">(optional)</span></label>
-            <textarea className="fld" id="cMsg" name="message" rows={4} placeholder="Your goals, timeline, budget range — whatever helps." />
+            <textarea className="fld" id="cMsg" name="message" rows={4} placeholder="Your goals, timeline, budget range, whatever helps." />
           </div>
           {failed && <p className="form-msg" role="alert">We couldn&apos;t send that. Please try again or email us at {CONFIG.email}.</p>}
           <button type="submit" className="btn btn-blue form-submit" disabled={sending}>

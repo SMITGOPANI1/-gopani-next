@@ -36,12 +36,12 @@ export const GROUPS: Record<ServiceGroup, { label: string; kicker: string; blurb
   build: {
     label: "Build",
     kicker: "Strategy & engineering",
-    blurb: "From the first planning call to production-grade software and the team that keeps it running — strategy, applications, infrastructure and support, under one roof.",
+    blurb: "From the first planning call to production-grade software and the team that keeps it running: strategy, applications, infrastructure and support, under one roof.",
   },
   grow: {
     label: "Grow",
     kicker: "Presence & marketing",
-    blurb: "A brand, website and content that look like the business you're building, plus the SEO and paid campaigns that turn visits into enquiries.",
+    blurb: "A brand, website and content that look like the business you're building, plus the SEO and paid campaigns that turn visits into inquiries.",
   },
 };
 
@@ -53,12 +53,12 @@ export const SERVICES: Service[] = [
     phase: "Plan",
     icon: "compass",
     title: "IT Strategy & Consulting",
-    result: "A clear, costed plan before you spend a rupee on a build.",
+    result: "A clear, costed plan before you spend a dollar on a build.",
     tagline: "Decide before you build.",
     description:
       "The most expensive technology mistakes are made in the first month: the wrong platform, the wrong scope, the wrong team. We slow that month down just enough to get it right, then hand you a plan your finance lead, your engineers and your investors can all read.",
     glance: {
-      bestFor: "Founders and leaders facing a build, buy or modernise decision.",
+      bestFor: "Founders and leaders facing a build, buy or modernize decision.",
       startingPoint: "A fixed-scope assessment, scoped in writing before work begins",
       delivery: "Remote-first, with on-site workshops on request",
       workWith: "A strategy lead and a solutions architect",
@@ -75,9 +75,9 @@ export const SERVICES: Service[] = [
       { title: "Build, buy or partner analysis", text: "Options scored side by side on cost, speed, risk and fit, so the decision is documented and defensible." },
       { title: "Roadmap and sequencing", text: "Initiatives ordered by business value and dependency, with owners and milestones." },
       { title: "Budget and resourcing model", text: "Realistic ranges for cost, team and timeline, including what to keep in-house and what to outsource." },
-      { title: "Security and compliance review", text: "A gap review against the standards your customers and regulators expect, with a prioritised fix list." },
+      { title: "Security and compliance review", text: "A gap review against the standards your customers and regulators expect, with a prioritized fix list." },
     ],
-    tools: ["Architecture reviews", "Cost modelling", "Vendor scorecards", "Risk registers", "Roadmapping workshops", "Security & compliance readiness"],
+    tools: ["Architecture reviews", "Cost modeling", "Vendor scorecards", "Risk registers", "Roadmapping workshops", "Security & compliance readiness"],
     process: [
       { title: "Listen", text: "We interview leadership, product and engineering, and review your documents, contracts and system diagrams.", youGet: "A shared problem statement and a list of constraints." },
       { title: "Assess", text: "We inspect architecture, code health, infrastructure, security and spending wherever access allows.", youGet: "A current-state report with risks ranked." },
@@ -106,11 +106,11 @@ export const SERVICES: Service[] = [
     result: "Web and mobile software you own, built to last.",
     tagline: "Software you own, built to last.",
     description:
-      "Off-the-shelf tools stop fitting at some point. We design and build the custom web, mobile and back-office software that does — with clean code, real documentation and automated tests, so you can keep it, extend it or hand it to another team.",
+      "Off-the-shelf tools stop fitting at some point. We design and build the custom web, mobile and back-office software that does, with clean code, real documentation and automated tests, so you can keep it, extend it or hand it to another team.",
     glance: {
       bestFor: "Companies replacing spreadsheets or legacy tools, and teams turning an idea into a product.",
       startingPoint: "A discovery sprint that ends in a scoped build plan",
-      delivery: "An India-based team, working in your time-zone overlap",
+      delivery: "A global team working in your time zone",
       workWith: "A product manager, a designer, engineers and QA",
     },
     problems: [
@@ -124,7 +124,7 @@ export const SERVICES: Service[] = [
       { title: "Mobile apps", text: "iOS and Android apps, native or cross-platform, through to store submission and release." },
       { title: "APIs and integrations", text: "Clean, documented APIs and connections to the payment, CRM, ERP and messaging tools you already use." },
       { title: "Back-office and internal systems", text: "Admin tools, reporting and automation that replace manual work and give staff the right level of access." },
-      { title: "Legacy modernisation", text: "Step-by-step migration of old systems to current platforms, running both side by side so operations never stop." },
+      { title: "Legacy modernization", text: "Step-by-step migration of old systems to current platforms, running both side by side so operations never stop." },
       { title: "UI/UX design", text: "Research-led flows, wireframes and clickable prototypes, tested with real users before development starts." },
     ],
     tools: ["React", "Next.js", "Node.js", "Flutter", "React Native", "PostgreSQL", "REST & GraphQL"],
@@ -156,7 +156,7 @@ export const SERVICES: Service[] = [
     result: "From sketch to live product, brand and all.",
     tagline: "From sketch to live product.",
     description:
-      "Early-stage founders don't need five agencies. They need one team that can test the idea, build the first version, put a brand and a website around it and get it in front of customers. That is this programme.",
+      "Early-stage founders don't need five agencies. They need one team that can test the idea, build the first version, put a brand and a website around it and get it in front of customers. That is this program.",
     glance: {
       bestFor: "First-time and repeat founders going from idea to first customers.",
       startingPoint: "A validation sprint",
@@ -183,7 +183,7 @@ export const SERVICES: Service[] = [
       { title: "Define", text: "We cut the idea down to the smallest version that proves it.", youGet: "MVP scope, a prototype and a build plan." },
       { title: "Build", text: "We work in short cycles with a demo every week, so you see the product take shape.", youGet: "A working MVP." },
       { title: "Launch", text: "Brand, website, store listings and a campaign go live together.", youGet: "A public launch and a first channel to reach users." },
-      { title: "Learn and iterate", text: "We review usage data and customer feedback, then plan the next releases.", youGet: "Findings and prioritised next sprints." },
+      { title: "Learn and iterate", text: "We review usage data and customer feedback, then plan the next releases.", youGet: "Findings and prioritized next sprints." },
     ],
     outcomes: [
       { title: "Evidence before big spending", text: "You learn whether people want it before you commit the main budget." },
@@ -211,7 +211,7 @@ export const SERVICES: Service[] = [
       bestFor: "Teams whose prototype works but won't survive real-world load.",
       startingPoint: "A proof of concept or an architecture review",
       delivery: "Cloud architects with hands-on DevOps engineering",
-      workWith: "A solutions architect and cloud and DevOps engineers",
+      workWith: "A solutions architect, cloud and DevOps engineers",
     },
     problems: [
       { title: "A demo that isn't production-ready", text: "It impresses in a meeting, but nobody trusts it with real customers yet." },
@@ -275,13 +275,13 @@ export const SERVICES: Service[] = [
       { title: "Engineering capacity", text: "Outsourced pods or augmented engineers who join your tools and rhythm quickly." },
       { title: "Data and reporting foundations", text: "A reliable data layer and dashboards, so leaders see the same numbers." },
       { title: "Process and tooling", text: "Cleaner release, support and on-call processes that still work with a larger team." },
-      { title: "Fractional leadership", text: "Interim technical or programme leadership while you hire." },
+      { title: "Fractional leadership", text: "Interim technical or program leadership while you hire." },
     ],
     tools: ["Load testing", "Database tuning", "Microservices", "Event queues", "Data warehouses", "BI dashboards", "Agile delivery"],
     process: [
       { title: "Diagnose", text: "We review product, technology and operations against the growth you are planning for.", youGet: "A scale-readiness report." },
-      { title: "Prioritise", text: "We rank fixes by their impact on growth and by effort.", youGet: "A sequenced scale plan." },
-      { title: "Stabilise", text: "We tackle the most urgent failure points first.", youGet: "Fewer incidents and room to breathe." },
+      { title: "Prioritize", text: "We rank fixes by their impact on growth and by effort.", youGet: "A sequenced scale plan." },
+      { title: "Stabilize", text: "We tackle the most urgent failure points first.", youGet: "Fewer incidents and room to breathe." },
       { title: "Expand", text: "We add capacity and re-architect in planned phases, alongside your roadmap.", youGet: "Higher throughput and a stronger platform." },
       { title: "Hand over or continue", text: "We transfer knowledge to your team, or stay on as an extension of it.", youGet: "Documentation, trained staff or an ongoing pod." },
     ],
@@ -338,7 +338,7 @@ export const SERVICES: Service[] = [
     outcomes: [
       { title: "Fewer surprises", text: "Monitoring and scheduled maintenance catch issues before your users do." },
       { title: "Coverage beyond office hours", text: "Pooled coverage across time zones means fewer issues wait until morning." },
-      { title: "Capacity that flexes", text: "Add or reduce engineers with 2 weeks' notice, under terms agreed in writing upfront — no long lock-in." },
+      { title: "Capacity that flexes", text: "Add or reduce engineers with 2 weeks' notice, under terms agreed in writing upfront, no long lock-in." },
     ],
     faqs: [
       { q: "What are your response times?", a: "They're set per client in a written service level agreement, based on severity, and confirmed before work starts." },
@@ -374,7 +374,7 @@ export const SERVICES: Service[] = [
     deliverables: [
       { title: "Website design and build", text: "A fast, mobile-first site with clear service pages, built on a content system your team can edit." },
       { title: "Mobile app design and store launch", text: "App interface, store listings, screenshots and release management for iOS and Android." },
-      { title: "Brand identity and assets", text: "Logo, colours, typography and templates, so everything you publish looks like one company." },
+      { title: "Brand identity and assets", text: "Logo, colors, typography and templates, so everything you publish looks like one company." },
       { title: "Social media presence", text: "Channel setup, a content strategy and regular posting, with community replies handled." },
       { title: "Content production", text: "Copywriting, graphics and short video for your site, social channels and campaigns." },
       { title: "Content calendar and refresh", text: "A planned schedule of posts and page updates, reviewed every quarter against performance." },
@@ -408,7 +408,7 @@ export const SERVICES: Service[] = [
     result: "Traffic you can trace all the way to revenue.",
     tagline: "Traffic you can trace to revenue.",
     description:
-      "Marketing works when search, ads, content and the website are planned together and measured against revenue, not clicks. We run SEO and paid advertising from one plan, with tracking in place before the first rupee is spent.",
+      "Marketing works when search, ads, content and the website are planned together and measured against revenue, not clicks. We run SEO and paid advertising from one plan, with tracking in place before the first dollar is spent.",
     glance: {
       bestFor: "Businesses that want steady lead flow instead of one-off campaigns.",
       startingPoint: "A marketing and measurement audit",
@@ -417,13 +417,13 @@ export const SERVICES: Service[] = [
     },
     problems: [
       { title: "Ad spend you can't trace", text: "Money goes into ads, but you can't say which ones bring customers." },
-      { title: "Invisible in search", text: "Buyers can't find you on Google or in AI answers like ChatGPT." },
-      { title: "Visitors who never enquire", text: "Traffic arrives, but very few people get in touch." },
+      { title: "Invisible in search", text: "Buyers can't find you on Google or in AI answers like ChatGPT or Claude." },
+      { title: "Visitors who never inquire", text: "Traffic arrives, but very few people get in touch." },
       { title: "Reports disconnected from revenue", text: "Dashboards are full of numbers that don't tie back to sales." },
     ],
     deliverables: [
-      { title: "Technical and content SEO", text: "Fixes to site health and structure, plus content that targets what your buyers actually search for — and that AI tools like ChatGPT and Google AI Overviews can cite." },
-      { title: "Paid search and paid social", text: "Campaigns on Google, Meta and LinkedIn, managed daily and optimised to cost per lead rather than clicks." },
+      { title: "Technical and content SEO", text: "Fixes to site health and structure, plus content that targets what your buyers actually search for, and that AI tools like ChatGPT and Google AI Overviews can cite." },
+      { title: "Paid search and paid social", text: "Campaigns on Google, Meta and LinkedIn, managed daily and optimized to cost per lead rather than clicks." },
       { title: "Landing pages and testing", text: "Focused pages and A/B tests that raise the share of visitors who get in touch." },
       { title: "Email and lifecycle marketing", text: "Automated sequences that nurture leads and bring customers back." },
       { title: "Analytics and attribution", text: "Tracking setup and dashboards that tie each channel to leads and revenue." },
@@ -434,7 +434,7 @@ export const SERVICES: Service[] = [
       { title: "Audit and baseline", text: "We measure where you stand: traffic, leads, costs and conversion.", youGet: "A baseline report and a list of quick wins." },
       { title: "Plan", text: "We choose channels, budgets and targets from the numbers.", youGet: "A 90-day growth plan." },
       { title: "Set up", text: "We build and test tracking, accounts, pages and campaigns.", youGet: "Measurement live before any spend begins." },
-      { title: "Run", text: "We launch and manage campaigns and publish content.", youGet: "Weekly activity and ongoing optimisation." },
+      { title: "Run", text: "We launch and manage campaigns and publish content.", youGet: "Weekly activity and ongoing optimization." },
       { title: "Report and compound", text: "Monthly reviews move budget toward what works.", youGet: "A dashboard and the plan for next month." },
     ],
     outcomes: [

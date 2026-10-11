@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FirstName from "./FirstName";
 
-export const metadata: Metadata = { title: "Thank you — KarmahubAI", robots: { index: false } };
+export const metadata: Metadata = { title: "Thank you | KarmaHubAI", robots: { index: false } };
 
 export default function ThankYou() {
   return (

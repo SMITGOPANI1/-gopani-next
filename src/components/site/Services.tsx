@@ -25,7 +25,7 @@ export default function Services({ limit, heading = true }: { limit?: number; he
         {heading && (
           <div className="sec-head">
             <SplitHeading className="h-section" text="We build it. Then we grow it." />
-            <p className="lead" data-reveal>Everything your business needs online, under one roof — so you never have to find, brief and manage a second vendor. Open any service below to see exactly how it runs, what you get and what changes for you.</p>
+            <p className="lead" data-reveal>Everything your business needs online, under one roof, so you never have to find, brief and manage a second vendor. Open any service below to see exactly how it runs, what you get and what changes for you.</p>
           </div>
         )}
 

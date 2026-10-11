@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CONFIG } from "@/config/site";
 
-export const metadata: Metadata = { title: "Privacy, Terms & Cookies — KarmahubAI" };
+export const metadata: Metadata = { title: "Privacy, Terms & Cookies | KarmaHubAI" };
 
 export default function Privacy() {
   return (
@@ -24,7 +24,7 @@ export default function Privacy() {
 
         <h2>How we use it</h2>
         <ul>
-          <li>To reply to your enquiry and prepare a proposal.</li>
+          <li>To reply to your inquiry and prepare a proposal.</li>
           <li>To send you information you asked for.</li>
           <li>To improve our website.</li>
         </ul>

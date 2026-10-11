@@ -13,7 +13,7 @@ export default function WhyUs() {
       <div className="wrap sec">
         <div className="sec-head center">
           <SplitHeading className="h-section" text="A simpler way to build and grow" />
-          <p className="lead" data-reveal>Experienced people, aligned teams, clear numbers and long-term thinking — all working together for your success.</p>
+          <p className="lead" data-reveal>Experienced people, aligned teams, clear numbers and long-term thinking, all working together for your success.</p>
         </div>
 
         <div className="why-track">

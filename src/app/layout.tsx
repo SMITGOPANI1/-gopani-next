@@ -28,9 +28,9 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const title = `${CONFIG.name} — We Build & Grow Digital Businesses`;
+const title = `${CONFIG.name} | We Build & Grow Digital Businesses`;
 const description =
-  "KarmahubAI is one team for websites, mobile apps, custom software, SEO, Google & Meta ads and branding. We build your business online, then grow it with marketing that brings real customers.";
+  "KarmaHubAI is one team for websites, mobile apps, custom software, SEO, Google & Meta ads and branding. We build your business online, then grow it with marketing that brings real customers.";
 
 export const metadata: Metadata = {
   title,

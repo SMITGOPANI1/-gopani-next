@@ -4,8 +4,8 @@
    with real figures before going live.
    ========================================================= */
 export const CONFIG = {
-  name: "KarmahubAI",
-  legalName: "KarmahubAI",
+  name: "KarmaHubAI",
+  legalName: "KarmaHubAI",
   tagline: "We build and grow digital businesses",
 
   whatsapp: "919999999999", // country code + number, no "+" or spaces
@@ -13,15 +13,15 @@ export const CONFIG = {
   email: "info@karmahubai.com",
   address: "Piscataway, New Jersey, United States",
   mapUrl: "https://maps.google.com/?q=Piscataway,+New+Jersey", // Google Maps link to the office
-  hours: "Mon–Sat, 10:00–19:00 IST",
-  whatsappMessage: "Hi KarmahubAI! I'd like to book a free call about my project.",
+  hours: "", // Leave blank to hide
+  whatsappMessage: "Hi KarmaHubAI! I'd like to book a free call about my project.",
 
   // Registration details shown in the footer. Leave blank to hide.
   llpin: "XXX-XXXX", // SAMPLE
   gstin: "", // e.g. 24XXXXXXXXXXXXX
 
   // Real person in the contact section
-  founder: { name: "Your Name", role: "Founder, KarmahubAI", initials: "YN" }, // SAMPLE
+  founder: { name: "Your Name", role: "Founder, KarmaHubAI", initials: "YN" }, // SAMPLE
 
   // Proof shown in the hero. SAMPLE values.
   proof: { rating: "4.9", ratingSource: "Google", projects: "100+", brands: "50+" },
@@ -31,7 +31,7 @@ export const CONFIG = {
     { value: 150, suffix: "+", label: "Projects delivered" },
     { value: 80, suffix: "+", label: "Happy clients" },
     { value: 5, suffix: "+", label: "Years of experience" },
-    { value: 2, prefix: "₹", suffix: " Cr+", label: "Ad spend managed" },
+    { value: 250, prefix: "$", suffix: "K+", label: "Ad spend managed" },
   ],
 
   // Review profile links (leave "" to hide a link)

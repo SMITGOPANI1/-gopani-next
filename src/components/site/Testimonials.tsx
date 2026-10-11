@@ -33,7 +33,7 @@ export default function Testimonials() {
       <div className="wrap sec">
         <div className="sec-head center">
           <SplitHeading className="h-section" text="Don't take our word for it." />
-          <p className="lead" data-reveal>Every quote below is from a named client with a real company — no stock photos, no Lorem Ipsum. If a number sounds big, ask us for the case study behind it.</p>
+          <p className="lead" data-reveal>Every quote below is from a named client with a real company: no stock photos and no Lorem Ipsum. If a number sounds big, ask us for the case study behind it.</p>
         </div>
 
         <div className="testi">

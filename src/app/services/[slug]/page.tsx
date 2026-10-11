@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = SERVICE_BY_ID[slug];
   if (!service) return {};
   return {
-    title: `${service.title} — KarmahubAI`,
+    title: `${service.title} | KarmaHubAI`,
     description: service.result,
   };
 }
@@ -122,7 +122,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <section className="bg-ink proc-sec">
+      <section className="bg-warm proc-sec">
         <div className="wrap sec proc">
           <div className="proc-copy">
             <div className="sec-head">

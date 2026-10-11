@@ -7,7 +7,7 @@ export default function Certifications() {
       <div className="wrap sec">
         <div className="sec-head center">
           <SplitHeading className="h-section-sm" text="Certified where it counts." />
-          <p className="lead" data-reveal>We only list credentials we actually hold — not claims we can&apos;t back up if you ask to see them.</p>
+          <p className="lead" data-reveal>We only list credentials we actually hold, never claims we can&apos;t back up if you ask to see them.</p>
         </div>
         <div className="badges" data-stagger>
           {BADGES.map((b) => (

@@ -22,7 +22,7 @@ export default function Motion() {
   // Layout-level components like this one don't remount on client-side
   // navigation (only the page content changes), so without `pathname` as a
   // dependency this effect would only ever run once, on the very first page
-  // — every page visited afterwards would have its [data-reveal]/[data-stagger]
+  //, every page visited afterwards would have its [data-reveal]/[data-stagger]
   // elements permanently stuck at opacity:0 (CSS hides them until GSAP reveals
   // them), which looks exactly like a blank page.
   useEffect(() => {
