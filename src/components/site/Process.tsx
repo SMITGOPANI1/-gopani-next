@@ -13,8 +13,17 @@ const TILE_PTS = [
   [[1181, 280], [1250, 230], [1250, 172], [1370, 172], [1370, 215], [1436, 250], [1436, 344], [1300, 422], [1181, 354]],
 ];
 const TILE_CLIPS = TILE_PTS.map((pts) => `polygon(${pts.map(([x, y]) => `${((x / 1536) * 100).toFixed(2)}% ${((y / 1024) * 100).toFixed(2)}%`).join(", ")})`);
-// Centre of each block: the hovered block scales up around it, so it covers its own original spot.
-const ORIGINS = TILE_PTS.map((p) => `${(((p[0][0] + p[5][0]) / 2 / 1536) * 100).toFixed(2)}% ${(((p[2][1] + p[7][1]) / 2 / 1024) * 100).toFixed(2)}%`);
+// Box around each step's icon [x, y, w, h] in image px. Only this part lifts on hover; it grows from
+// its base, so the enlarged copy always covers the original icon underneath.
+const ICON_BOXES = [[196, 708, 160, 140], [470, 582, 146, 146], [726, 440, 142, 182], [988, 302, 124, 160], [1244, 172, 132, 130]];
+const ICON_STYLES = ICON_BOXES.map(([x, y, w, h]) => ({
+  left: `${(x / 1536) * 100}%`,
+  top: `${(y / 1024) * 100}%`,
+  width: `${(w / 1536) * 100}%`,
+  height: `${(h / 1024) * 100}%`,
+  backgroundSize: `${(1536 / w) * 100}% ${(1024 / h) * 100}%`,
+  backgroundPosition: `${(x / (1536 - w)) * 100}% ${(y / (1024 - h)) * 100}%`,
+}));
 
 
 /** Section 04: how we work, the five steps as a vertical timeline beside the step illustration. */
@@ -46,8 +55,8 @@ export default function Process() {
           </div>
         </div>
 
-        {/* Step illustration. Each block (tile + icon) is a clipped copy of the same picture laid
-            exactly over itself; on hover it lifts as one piece. Linked both ways with the list. */}
+        {/* Step illustration. Each icon is a feathered copy of the same picture laid
+            exactly over itself. The tile is only the hover area; on hover just the icon lifts. Linked both ways with the list. */}
         <div className="pv" data-reveal data-delay="0.15">
           <div className="pv-in">
             <Image
@@ -59,8 +68,9 @@ export default function Process() {
               unoptimized
             />
             {PROCESS.map((p, i) => (
-              <div className="pv-step" data-n={i + 1} key={p.n} aria-hidden="true" style={{ transformOrigin: ORIGINS[i] }}>
+              <div className="pv-step" data-n={i + 1} key={p.n} aria-hidden="true">
                 <div className="pv-tile" style={{ clipPath: TILE_CLIPS[i] }} />
+                <div className="pv-icon" style={ICON_STYLES[i]} />
               </div>
             ))}
           </div>

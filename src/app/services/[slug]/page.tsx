@@ -64,20 +64,22 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             </div>
             <div className="svc-glance" data-reveal data-delay="0.2">
               <p className="m svc-glance-head">At a glance</p>
-              {[
-                ["Best for", service.glance.bestFor],
-                ["Starting point", service.glance.startingPoint],
-                ["Delivery", service.glance.delivery],
-                ["You'll work with", service.glance.workWith],
-              ].map(([label, value], i) => (
-                <div className="svc-glance-row" key={label}>
-                  <span className="svc-glance-num">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <p className="m">{label}</p>
-                    <p>{value}</p>
-                  </div>
-                </div>
-              ))}
+              <ol className="svc-glance-list">
+                {[
+                  ["Best for", service.glance.bestFor],
+                  ["Starting point", service.glance.startingPoint],
+                  ["Delivery", service.glance.delivery],
+                  ["You'll work with", service.glance.workWith],
+                ].map(([label, value], i) => (
+                  <li className="svc-glance-row" key={label}>
+                    <span className="svc-glance-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                    <div>
+                      <p className="m">{label}</p>
+                      <p>{value}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>
